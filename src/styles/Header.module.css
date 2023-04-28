@@ -36,9 +36,9 @@
 
 .logo {
   cursor: pointer;
-  margin-right: 200px;
   margin-top: 24px;
   margin-bottom: 24px;
+  margin-right: 200px;
 }
 
 /* Text */
@@ -48,4 +48,12 @@
 
 .text_color_inactive {
   color: #8585AD;
+}
+
+.header_text {
+  font-family: 'Jet Brains Mono';
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: normal;
+  color: #F2F2F3;
 }

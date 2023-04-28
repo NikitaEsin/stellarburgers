@@ -13,50 +13,96 @@ import saus from '../img/sauce-01.png'
 const BurgerIngredients = () => {
     return(
         <section className={styles.container + ' pt-10'}>
-            <h1 className='text text_type_main-big mb-5'>Соберите бургер</h1>
+            <h1 className="text text_type_main-large mb-5">Соберите бургер</h1>
             <Table/>
             <div className={styles.scroll}>
-                <h2 className='text text_color_inactive'>Булки</h2>
+                <h2 className="text text_type_main-medium pt-10 pb-5">Булки</h2>
                 <div className={styles.ingredients}>
                     <div className={styles.card}>
                         <img src={bun} alt="" />
-                        <p>20</p>
-                        <CurrencyIcon type="primary" />
-                        <p>Краторная булка N-200i</p>
+                        <div className={styles.cash}>
+                            <p className="text text_type_digits-default">20</p>
+                            <CurrencyIcon type="primary" />
+                        </div>
+                        <p className="text text_type_main-small pb-6">Краторная булка N-200i</p>
                     </div>
-                    <div>
+                    <div className={styles.card}>
                         <img src={bun} alt="" />
-                        <p>20</p>
-                        <CurrencyIcon type="primary" />
-                        <p>Краторная булка N-200i</p>
+                        <div className={styles.cash}>
+                            <p className="text text_type_digits-default">20</p>
+                            <CurrencyIcon type="primary" />
+                        </div>
+                        <p className="text text_type_main-small pb-6">Краторная булка N-200i</p>
                     </div>
                 </div>
-                    <h2>Соусы</h2>
+                    <h2 className="text text_type_main-medium pt-10 pb-5">Соусы</h2>
                     <div className={styles.ingredients}>
-                        
-                        <div>
-                        <img src={saus} alt="" />
-                            <p>20</p>
-                            <CurrencyIcon type="primary" />
-                            <p>Краторная булка N-200i</p>
-                        </div>
-                        <div>
+                        <div className={styles.card}>
                             <img src={saus} alt="" />
-                            <p>20</p>
-                            <CurrencyIcon type="primary" />
-                            <p>Краторная булка N-200i</p>
+                            <div className={styles.cash}>
+                                <p className="text text_type_digits-default">30</p>
+                                <CurrencyIcon type="primary" />
+                            </div>
+                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
                         </div>
-                        <div>
+                        <div className={styles.card}>
                             <img src={saus} alt="" />
-                            <p>20</p>
-                            <CurrencyIcon type="primary" />
-                            <p>Краторная булка N-200i</p>
+                            <div className={styles.cash}>
+                                <p className="text text_type_digits-default">30</p>
+                                <CurrencyIcon type="primary" />
+                            </div>
+                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
                         </div>
-                        <div>
+                        <div className={styles.card}>
                             <img src={saus} alt="" />
-                            <p>20</p>
-                            <CurrencyIcon type="primary" />
-                            <p>Краторная булка N-200i</p>
+                            <div className={styles.cash}>
+                                <p className="text text_type_digits-default">30</p>
+                                <CurrencyIcon type="primary" />
+                            </div>
+                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
+                        </div>
+                        <div className={styles.card}>
+                            <img src={saus} alt="" />
+                            <div className={styles.cash}>
+                                <p className="text text_type_digits-default">30</p>
+                                <CurrencyIcon type="primary" />
+                            </div>
+                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
+                        </div>
+                    </div>
+                    <h2 className="text text_type_main-medium pt-10 pb-5">Соусы</h2>
+                    <div className={styles.ingredients}>
+                        <div className={styles.card}>
+                            <img src={saus} alt="" />
+                            <div className={styles.cash}>
+                                <p className="text text_type_digits-default">30</p>
+                                <CurrencyIcon type="primary" />
+                            </div>
+                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
+                        </div>
+                        <div className={styles.card}>
+                            <img src={saus} alt="" />
+                            <div className={styles.cash}>
+                                <p className="text text_type_digits-default">30</p>
+                                <CurrencyIcon type="primary" />
+                            </div>
+                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
+                        </div>
+                        <div className={styles.card}>
+                            <img src={saus} alt="" />
+                            <div className={styles.cash}>
+                                <p className="text text_type_digits-default">30</p>
+                                <CurrencyIcon type="primary" />
+                            </div>
+                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
+                        </div>
+                        <div className={styles.card}>
+                            <img src={saus} alt="" />
+                            <div className={styles.cash}>
+                                <p className="text text_type_digits-default">30</p>
+                                <CurrencyIcon type="primary" />
+                            </div>
+                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
                         </div>
                     </div>
             </div>
