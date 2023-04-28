@@ -4,10 +4,11 @@ import styles from '../styles/BurgerIngredients.module.css'
 
 import Table from "./Table";
 
-import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import bun from '../img/bun-01.png'
 import saus from '../img/sauce-01.png'
+import ingredient from '../img/sauce-02.png'
 
 
 const BurgerIngredients = () => {
@@ -19,6 +20,7 @@ const BurgerIngredients = () => {
                 <h2 className="text text_type_main-medium pt-10 pb-5">Булки</h2>
                 <div className={styles.ingredients}>
                     <div className={styles.card}>
+                        <Counter className={styles.number} count={1} size="default" extraClass="m-1" />
                         <img src={bun} alt="" />
                         <div className={styles.cash}>
                             <p className="text text_type_digits-default">20</p>
@@ -43,7 +45,7 @@ const BurgerIngredients = () => {
                                 <p className="text text_type_digits-default">30</p>
                                 <CurrencyIcon type="primary" />
                             </div>
-                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
+                            <p className="text text_type_main-small pb-6">Соус фирменный Space Sauce</p>
                         </div>
                         <div className={styles.card}>
                             <img src={saus} alt="" />
@@ -51,7 +53,16 @@ const BurgerIngredients = () => {
                                 <p className="text text_type_digits-default">30</p>
                                 <CurrencyIcon type="primary" />
                             </div>
-                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
+                            <p className="text text_type_main-small pb-6">Соус фирменный Space Sauce</p>
+                        </div>
+                        <div className={styles.card}>
+                            <Counter className={styles.number} count={1} size="default" extraClass="m-1" />
+                            <img src={saus} alt="" />
+                            <div className={styles.cash}>
+                                <p className="text text_type_digits-default">30</p>
+                                <CurrencyIcon type="primary" />
+                            </div>
+                            <p className="text text_type_main-small pb-6">Соус фирменный Space Sauce</p>
                         </div>
                         <div className={styles.card}>
                             <img src={saus} alt="" />
@@ -59,47 +70,39 @@ const BurgerIngredients = () => {
                                 <p className="text text_type_digits-default">30</p>
                                 <CurrencyIcon type="primary" />
                             </div>
-                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
-                        </div>
-                        <div className={styles.card}>
-                            <img src={saus} alt="" />
-                            <div className={styles.cash}>
-                                <p className="text text_type_digits-default">30</p>
-                                <CurrencyIcon type="primary" />
-                            </div>
-                            <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
+                            <p className="text text_type_main-small pb-6">Соус фирменный Space Sauce</p>
                         </div>
                     </div>
-                    <h2 className="text text_type_main-medium pt-10 pb-5">Соусы</h2>
+                    <h2 className="text text_type_main-medium pt-10 pb-5">Начинки</h2>
                     <div className={styles.ingredients}>
                         <div className={styles.card}>
-                            <img src={saus} alt="" />
+                            <img src={ingredient} alt="" />
                             <div className={styles.cash}>
-                                <p className="text text_type_digits-default">30</p>
+                                <p className="text text_type_digits-default">80</p>
                                 <CurrencyIcon type="primary" />
                             </div>
                             <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
                         </div>
                         <div className={styles.card}>
-                            <img src={saus} alt="" />
+                            <img src={ingredient} alt="" />
                             <div className={styles.cash}>
-                                <p className="text text_type_digits-default">30</p>
+                                <p className="text text_type_digits-default">80</p>
                                 <CurrencyIcon type="primary" />
                             </div>
                             <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
                         </div>
                         <div className={styles.card}>
-                            <img src={saus} alt="" />
+                            <img src={ingredient} alt="" />
                             <div className={styles.cash}>
-                                <p className="text text_type_digits-default">30</p>
+                                <p className="text text_type_digits-default">80</p>
                                 <CurrencyIcon type="primary" />
                             </div>
                             <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
                         </div>
                         <div className={styles.card}>
-                            <img src={saus} alt="" />
+                            <img src={ingredient} alt="" />
                             <div className={styles.cash}>
-                                <p className="text text_type_digits-default">30</p>
+                                <p className="text text_type_digits-default">80</p>
                                 <CurrencyIcon type="primary" />
                             </div>
                             <p className="text text_type_main-small pb-6">Соус Spicy-X</p>
