@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll {
+
+}
+
+.ingredients {
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    flex-wrap: wrap;
+    min-width: 272px;
+}
+
+.sause {
+    display: flex;
+}
