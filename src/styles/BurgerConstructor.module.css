@@ -1,0 +1,47 @@
+.scroll {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    position: relative;
+    max-width: 600px;
+    max-height: 464px;
+    gap: 16px;
+    
+}
+
+.container {
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 600px;
+}
+
+.cash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 40px;
+    margin: 0;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 40px;
+    padding-top: 40px;
+}
+
+.itemContainer {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
