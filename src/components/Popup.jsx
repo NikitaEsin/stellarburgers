@@ -4,8 +4,9 @@ import styles from '../styles/Popup.module.css'
 
 import {  } from '@ya.praktikum/react-developer-burger-ui-components';
 
-import PopupOrder from "./PopupOrder";
+
 import PopupOverlay from "./PopupOverlay";
+
 
 
 
@@ -20,7 +21,7 @@ const Popup = (props) => {
                         props.setActivator(false)
                     }}>
                     </button>
-                    <PopupOrder />
+                    {props.children}
                 </div>
             </section>
         </PopupOverlay>

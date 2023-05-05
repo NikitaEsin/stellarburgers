@@ -21,7 +21,7 @@
 .header_button {
   display: flex;
   cursor: pointer;
-  border: 1px dashed #4C4CFF;
+  border: none;
   border-radius: 40px;
   background: #1C1C21;
   align-items: center;
@@ -39,15 +39,6 @@
   margin-top: 24px;
   margin-bottom: 24px;
   margin-right: 200px;
-}
-
-/* Text */
-.text {
-  color: #F2F2F3;
-}
-
-.text_color_inactive {
-  color: #8585AD;
 }
 
 .header_text {
