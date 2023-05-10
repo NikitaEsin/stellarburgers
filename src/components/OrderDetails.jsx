@@ -1,12 +1,12 @@
 import React from "react";
 
-import styles from '../styles/PopupOrder.module.css'
+import styles from '../styles/OrderDetails.module.css'
 
 import done from '../img/done.png'
 
 import {  } from '@ya.praktikum/react-developer-burger-ui-components';
 
-const PopupOrder = () => {
+const OrderDetails = () => {
     return(
         <div className={styles.intel}>
             <p className={styles.shadow + " text text_type_digits-large pt-30"}>034536</p>
@@ -18,4 +18,4 @@ const PopupOrder = () => {
     )
 }
 
-export default PopupOrder;
+export default OrderDetails;

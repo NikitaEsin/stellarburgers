@@ -4,6 +4,8 @@ import styles from '../styles/BurgerIngredients.module.css'
 
 import Table from "./Table";
 
+import PropTypes from 'prop-types';
+
 import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import bun from '../img/bun-01.png'
@@ -13,6 +15,10 @@ import ingredient from '../img/sauce-02.png'
 
 const BurgerIngredients = (props) => {
     console.log(props)
+    BurgerIngredients.propTypes = {
+        activator: PropTypes.bool.isRequired,
+        setActivator: PropTypes.func.isRequired
+    }; 
     return(
         <section className={styles.container + ' pt-10'}>
             <h1 className="text text_type_main-large mb-5">Соберите бургер</h1>
@@ -24,7 +30,7 @@ const BurgerIngredients = (props) => {
                     props.setActivator(true) }}
                     className={styles.card}>
                         <Counter className={styles.number} count={1} size="default" extraClass="m-1" />
-                        <img src={bun} alt="" />
+                        <img src={bun} alt="космо булка" />
                         <div className={styles.cash}>
                             <p className="text text_type_digits-default">20</p>
                             <CurrencyIcon type="primary" />
@@ -34,7 +40,7 @@ const BurgerIngredients = (props) => {
                     <div onClick={() => {
                     props.setActivator(true) }}
                     className={styles.card}>
-                        <img src={bun} alt="" />
+                        <img src={bun} alt="космо булка" />
                         <div className={styles.cash}>
                             <p className="text text_type_digits-default">20</p>
                             <CurrencyIcon type="primary" />
@@ -47,7 +53,7 @@ const BurgerIngredients = (props) => {
                         <div onClick={() => {
                             props.setActivator(true) }}
                             className={styles.card}>
-                            <img src={saus} alt="" />
+                            <img src={saus} alt="космо соус" />
                             <div className={styles.cash}>
                                 <p className="text text_type_digits-default">30</p>
                                 <CurrencyIcon type="primary" />
@@ -57,7 +63,7 @@ const BurgerIngredients = (props) => {
                         <div onClick={() => {
                             props.setActivator(true) }}
                             className={styles.card}>
-                            <img src={saus} alt="" />
+                            <img src={saus} alt="космо соус" />
                             <div className={styles.cash}>
                                 <p className="text text_type_digits-default">30</p>
                                 <CurrencyIcon type="primary" />
@@ -68,7 +74,7 @@ const BurgerIngredients = (props) => {
                             props.setActivator(true) }}
                             className={styles.card}>
                             <Counter className={styles.number} count={1} size="default" extraClass="m-1" />
-                            <img src={saus} alt="" />
+                            <img src={saus} alt="космо соус" />
                             <div className={styles.cash}>
                                 <p className="text text_type_digits-default">30</p>
                                 <CurrencyIcon type="primary" />
@@ -78,7 +84,7 @@ const BurgerIngredients = (props) => {
                         <div onClick={() => {
                             props.setActivator(true) }}
                             className={styles.card}>
-                            <img src={saus} alt="" />
+                            <img src={saus} alt="космо соус" />
                             <div className={styles.cash}>
                                 <p className="text text_type_digits-default">30</p>
                                 <CurrencyIcon type="primary" />
@@ -91,7 +97,7 @@ const BurgerIngredients = (props) => {
                         <div onClick={() => {
                             props.setActivator(true) }}
                             className={styles.card}>
-                            <img src={ingredient} alt="" />
+                            <img src={ingredient} alt="космо ингридиент" />
                             <div className={styles.cash}>
                                 <p className="text text_type_digits-default">80</p>
                                 <CurrencyIcon type="primary" />
@@ -101,7 +107,7 @@ const BurgerIngredients = (props) => {
                         <div onClick={() => {
                             props.setActivator(true) }}
                             className={styles.card}>
-                            <img src={ingredient} alt="" />
+                            <img src={ingredient} alt="космо ингридиент" />
                             <div className={styles.cash}>
                                 <p className="text text_type_digits-default">80</p>
                                 <CurrencyIcon type="primary" />
@@ -111,7 +117,7 @@ const BurgerIngredients = (props) => {
                         <div onClick={() => {
                             props.setActivator(true) }}
                             className={styles.card}>
-                            <img src={ingredient} alt="" />
+                            <img src={ingredient} alt="космо ингридиент" />
                             <div className={styles.cash}>
                                 <p className="text text_type_digits-default">80</p>
                                 <CurrencyIcon type="primary" />
@@ -121,7 +127,7 @@ const BurgerIngredients = (props) => {
                         <div onClick={() => {
                             props.setActivator(true) }}
                             className={styles.card}>
-                            <img src={ingredient} alt="" />
+                            <img src={ingredient} alt="космо ингридиент" />
                             <div className={styles.cash}>
                                 <p className="text text_type_digits-default">80</p>
                                 <CurrencyIcon type="primary" />

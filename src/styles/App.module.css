@@ -1,20 +1,9 @@
-@import url(./vendor/normalize.css);
-
-.App {
-  background-color: #131316;
-  position: relative;
-}
+@import url(../vendor/normalize.css);
 
 .main {
   width: 100%;
   display: flex;
   justify-content: center;
+  gap: 40px;
 }
 
-.container {
-  max-width: 1240px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 40px;
-}

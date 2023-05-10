@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 
+import styles from './styles/App.module.css'
 
 import Header from './components/Header';
 
 import BurgerIngredients from './components/BurgerIngredients';
 import BurgerConstructor from './components/BurgerConstructor';
-import Popup from './components/Popup';
-import PopupOrder from './components/PopupOrder';
-import PopupIngridiant from './components/PopupIngridiant';
+import Modal from './components/Modal';
+import OrderDetails from './components/OrderDetails';
+import IngredientDetails from './components/IngredientDetails';
 
 
 
@@ -27,9 +28,9 @@ function App() {
   const [popupIngridiantActiv, setPopupIngridiantActiv] = useState(false)
     return(<>
   <Header />
-  <main style={{ display: 'flex', gap: '40px', justifyContent: 'center' }}>
-    <Popup activator={popupOrderActiv} setActivator={setPopupOrderActiv}><PopupOrder/></Popup>
-    <Popup activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}><PopupIngridiant/></Popup>
+  <main className={styles.main}>
+    <Modal activator={popupOrderActiv} setActivator={setPopupOrderActiv}><OrderDetails/></Modal>
+    <Modal activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}><IngredientDetails/></Modal>
     <BurgerIngredients activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}/>
     <BurgerConstructor activator={popupOrderActiv} setActivator={setPopupOrderActiv}/>
   </main>

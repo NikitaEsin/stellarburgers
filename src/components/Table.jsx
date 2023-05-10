@@ -1,11 +1,13 @@
 import React from "react";
 
+import styles from '../styles/Table.module.css'
+
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
 
 const Table = () => {
     const [current, setCurrent] = React.useState('one')
     return (
-      <div style={{ display: 'flex' }}>
+      <div className={styles.table}>
         <Tab value="one" active={current === 'one'} onClick={setCurrent}>
         Булки
         </Tab>

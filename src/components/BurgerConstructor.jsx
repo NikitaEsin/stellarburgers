@@ -6,7 +6,14 @@ import { ConstructorElement, DragIcon, CurrencyIcon, Button } from '@ya.praktiku
 
 import img from '../img/bun-02.png'
 
+import PropTypes from 'prop-types';
+
 const BurgerConstructor = (props) => {
+    console.log(props)
+    BurgerConstructor.propTypes = {
+        activator: PropTypes.bool.isRequired,
+        setActivator: PropTypes.func.isRequired
+    }; 
     return(
         <section className={styles.container + ' pt-25'}>
             <div className={styles.burger}>

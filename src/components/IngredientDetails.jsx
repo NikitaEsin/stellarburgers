@@ -1,10 +1,10 @@
 import React from "react";
 
-import styles from '../styles/PopupIngridiant.module.css'
+import styles from '../styles/IngredientDetails.module.css'
 
 import meat from '../img/meat-01.png'
 
-const PopupIngridient = () => {
+const IngredientDetails = () => {
     return (
         <div className={styles.intel}>
             <p className="text text_type_main-large pt-10">Детали ингредиента</p>
@@ -32,4 +32,4 @@ const PopupIngridient = () => {
     );
 };
 
-export default PopupIngridient;
+export default IngredientDetails;
