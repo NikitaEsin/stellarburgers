@@ -8,12 +8,34 @@ import img from '../img/bun-02.png'
 
 import PropTypes from 'prop-types';
 
+import { useDrop } from 'react-dnd';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { v4 as uuidv4 } from 'uuid';
+
+import { addItem } from '../services/actions';
+
 const BurgerConstructor = (props) => {
-    console.log(props)
     BurgerConstructor.propTypes = {
         activator: PropTypes.bool.isRequired,
         setActivator: PropTypes.func.isRequired
     }; 
+
+const dispatch = useDispatch();
+const { constructorData } = useSelector(
+    (state) => state.mainReducer
+  );
+
+const [, drop] = useDrop({
+    accept: 'ingredient',
+    drop(itemId) {
+      const specialId = uuidv4();
+      console.log(itemId)
+      dispatch(addItem(itemId, specialId));
+    },
+  });
+
     return(
         <section className={styles.container + ' pt-25'}>
             <div className={styles.burger}>
@@ -25,63 +47,19 @@ const BurgerConstructor = (props) => {
                 price={20}
                 thumbnail={img}
                 />
-                <div className={styles.scroll}>
-                    <div className={styles.itemContainer}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                        text="Краторная булка N-200i"
-                        price={30}
-                        thumbnail={img}
-                        />
-                    </div>
-                    <div className={styles.itemContainer}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                        text="Краторная булка N-200i"
-                        price={30}
-                        thumbnail={img}
-                        />
-                    </div>
-                    <div className={styles.itemContainer}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                        text="Краторная булка N-200i"
-                        price={30}
-                        thumbnail={img}
-                        />
-                    </div>
-                    <div className={styles.itemContainer}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                        text="Краторная булка N-200i"
-                        price={30}
-                        thumbnail={img}
-                        />
-                    </div>
-                    <div className={styles.itemContainer}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                        text="Краторная булка N-200i"
-                        price={30}
-                        thumbnail={img}
-                        />
-                    </div>
-                    <div className={styles.itemContainer}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                        text="Краторная булка N-200i"
-                        price={30}
-                        thumbnail={img}
-                        />
-                    </div>
-                    <div className={styles.itemContainer}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                        text="Краторная булка N-200i"
-                        price={30}
-                        thumbnail={img}
-                        />
-                    </div>
+                <div ref={drop} className={styles.scroll}>
+                    {constructorData.map((item, index) => {
+                        return(
+                            <div key={index} className={styles.itemContainer}>
+                                <DragIcon type="primary" />
+                                <ConstructorElement
+                                text="Краторная булка N-200i"
+                                price={item.price}
+                                thumbnail={item.image}
+                            />
+                            </div>
+                        )
+                    })}
                 </div>
                <ConstructorElement
                 className={styles.bun}

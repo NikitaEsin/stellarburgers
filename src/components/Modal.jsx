@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import ModalOverlay from "./ModalOverlay";
 
 const Modal = (props) => {
-    console.log(props)
     Modal.propTypes = {
         activator: PropTypes.bool.isRequired,
         setActivator: PropTypes.func.isRequired
