@@ -35,7 +35,7 @@ const BurgerIngredients = (props) => {
                   <BurgerIngredient
                     key={item._id}
                     data={item}
-                    setActive={props.setActive}
+                    setActivator={props.setActivator}
                   />
                 );
               }
@@ -54,7 +54,7 @@ const BurgerIngredients = (props) => {
                   <BurgerIngredient
                     key={item._id}
                     data={item}
-                    setActive={props.setActive}
+                    setActivator={props.setActivator}
                   />
                 );
               }
@@ -70,7 +70,7 @@ const BurgerIngredients = (props) => {
                   <BurgerIngredient
                     key={item._id}
                     data={item}
-                    setActive={props.setActive}
+                    setActivator={props.setActivator}
                   />
                 );
               }
@@ -83,7 +83,7 @@ const BurgerIngredients = (props) => {
 };
 
 BurgerIngredients.propTypes = {
-  setActive: PropTypes.func,
+  setActivator: PropTypes.func,
 };
 
 export default BurgerIngredients;

@@ -1,5 +1,6 @@
 import {
     POST_ORDER,
+    GET_INGREDIENT_INFO
 } from './constants'
 
 import { request } from '../../utils'
@@ -24,5 +25,13 @@ export function postOrder(ids) {
           });
         })
         
+    };
+  }
+  export function getInfo(item) {
+    return function (dispatch) {
+      dispatch({
+        type: GET_INGREDIENT_INFO,
+        info: item,
+      });
     };
   }

@@ -2,30 +2,33 @@ import React from "react";
 
 import styles from '../styles/IngredientDetails.module.css'
 
-import meat from '../img/meat-01.png'
+import { useSelector } from "react-redux";
 
 const IngredientDetails = () => {
+    const { data } = useSelector(
+        (state) => state.infoReducer
+      );
     return (
         <div className={styles.intel}>
             <p className="text text_type_main-large pt-10">Детали ингредиента</p>
-            <img src={meat} alt="" />
-            <p className="text text_type_main-medium pt-4">Биокотлета из марсианской Магнолии</p>
+            <img src={data.image} alt="" />
+            <p className="text text_type_main-medium pt-4">{data.name}</p>
             <div className={styles.list + ' pb-15 pt-8'}>
                 <div className={styles.block}>
                     <p className="text text_type_main-default text_color_inactive">Калории,ккал</p>
-                    <p className="text text_type_digits-default text_color_inactive">244,4</p>
+                    <p className="text text_type_digits-default text_color_inactive">{data.calories}</p>
                 </div>
                 <div className={styles.block}>
                     <p className="text text_type_main-default text_color_inactive">Белки, г</p>
-                    <p className="text text_type_digits-default text_color_inactive">12,2</p>
+                    <p className="text text_type_digits-default text_color_inactive">{data.proteins}</p>
                 </div>
                 <div className={styles.block}>
                     <p className="text text_type_main-default text_color_inactive">Жиры, г</p>
-                    <p className="text text_type_digits-default text_color_inactive">17,2</p>
+                    <p className="text text_type_digits-default text_color_inactive">{data.fat}</p>
                 </div>
                 <div className={styles.block}>
                     <p className="text text_type_main-default text_color_inactive">Углеводы, г</p>
-                    <p className="text text_type_digits-default text_color_inactive">10,2</p>
+                    <p className="text text_type_digits-default text_color_inactive">{data.carbohydrates}</p>
                 </div>
             </div>
         </div>

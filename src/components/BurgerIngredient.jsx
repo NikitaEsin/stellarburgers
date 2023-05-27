@@ -9,12 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from './Loader';
 
 import { useDrag } from 'react-dnd';
+import { getInfo } from '../services/actions/Modal';
 
 const BurgerIngredient = (props) => {
   const { constructorData, orderBun } = useSelector(
     (state) => state.mainReducer
   );
-  console.log(props)
 
   const dispatch = useDispatch();
 
@@ -49,7 +49,7 @@ const BurgerIngredient = (props) => {
   } else {
     counter = '';
   }
-
+console.log(props)
   if (props.data.length > 1) {
     return <Loader />;
   } else {
@@ -58,8 +58,8 @@ const BurgerIngredient = (props) => {
         ref={dragRef}
         className={styles.ingredientCard}
         onClick={() => {
-          props.setActive(true);
-          dispatch();
+          props.setActivator(true);
+          dispatch(getInfo(props.data))
         }}
       >
         {counter}
