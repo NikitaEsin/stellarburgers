@@ -1,97 +1,89 @@
-import React from "react";
-
-import styles from '../styles/BurgerIngredients.module.css'
-
-import Table from "./Table";
-
+import React from 'react';
+import Table from './Table';
+import styles from '../styles/BurgerIngredients.module.css';
+import BurgerIngredient from './BurgerIngredient';
 import PropTypes from 'prop-types';
-
-import { useDrag } from 'react-dnd';
-
-import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
+import { useInView } from 'react-intersection-observer';
+import { useSelector } from 'react-redux';
 
 const BurgerIngredients = (props) => {
-    BurgerIngredients.propTypes = {
-        activator: PropTypes.bool.isRequired,
-        setActivator: PropTypes.func.isRequired
-    }; 
+  const { data } = useSelector((state) => state.mainReducer);
 
-    const id = props.data._id;
+  const [bunRef, bunView] = useInView({
+    threshold: 0,
+  });
 
-    const [, dragRef] = useDrag({
-        type: 'ingredient',
-        item: { id },
-      });
+  const [sauceRef, sauceView] = useInView({
+    threshold: 0,
+  });
 
-    return(
-        <section className={styles.container + ' pt-10'}>
-            <h1 className="text text_type_main-large mb-5">Соберите бургер</h1>
-            <Table/>
-            <div className={styles.scroll}>
-                <h2 className="text text_type_main-medium pt-10 pb-5">Булки</h2>
-                <div className={styles.ingredients}>
-                    {props.data.map((item, index) => {
-                        if (item.type === 'bun') {
-                            return (
-                                <div key={index} onClick={() => {
-                                    props.setActivator(true) }}
-                                    className={styles.card}>
-                                        <Counter className={styles.number} count={1} size="default" extraClass="m-1" />
-                                        <img src={item.image} alt={item.name} />
-                                        <div className={styles.cash}>
-                                            <p className="text text_type_digits-default">{item.price}</p>
-                                            <CurrencyIcon type="primary" />
-                                        </div>
-                                        <p className="text text_type_main-small pb-6">{item.name}</p>
-                                    </div>
-                            )
-                        }
-                    })}
-                </div>
-                    <h2 className="text text_type_main-medium pt-10 pb-5">Соусы</h2>
-                    <div className={styles.ingredients}>
-                        
-                    {props.data.map((item) => {
-                        if (item.type === 'sauce') {
-                            return (
-                                <div ref={dragRef} onClick={() => {
-                                    props.setActivator(true) }}
-                                    className={styles.card}>
-                                        <Counter className={styles.number} count={1} size="default" extraClass="m-1" />
-                                        <img src={item.image} alt={item.name} />
-                                        <div className={styles.cash}>
-                                            <p className="text text_type_digits-default">{item.price}</p>
-                                            <CurrencyIcon type="primary" />
-                                        </div>
-                                        <p className="text text_type_main-small pb-6">{item.name}</p>
-                                    </div>
-                            )
-                        }
-                    })}
-                    </div>
-                    <h2 className="text text_type_main-medium pt-10 pb-5">Начинки</h2>
-                    <div className={styles.ingredients}>
-                    {props.data.map((item) => {
-                        if (item.type === 'main') {
-                            return (
-                                <div onClick={() => {
-                                    props.setActivator(true) }}
-                                    className={styles.card}>
-                                        <Counter className={styles.number} count={1} size="default" extraClass="m-1" />
-                                        <img src={item.image} alt={item.name} />
-                                        <div className={styles.cash}>
-                                            <p className="text text_type_digits-default">{item.price}</p>
-                                            <CurrencyIcon type="primary" />
-                                        </div>
-                                        <p className="text text_type_main-small pb-6">{item.name}</p>
-                                    </div>
-                            )
-                        }
-                    })}
-                    </div>
-            </div>
+  const [mainRef, mainView] = useInView({
+    threshold: 0,
+  });
+
+  return (
+    <section className={styles.container + ' pt-10'}>
+      <h1 className="text text_type_main-large pb-5">Соберите бургер</h1>
+      <Table bun={bunView} sauce={sauceView} main={mainView} />
+      <div className={styles.scroll}>
+        <section className={styles.ingredientsSection + ' pt-10'} ref={bunRef}>
+          <h2 className="text text_type_main-medium pb-6">Булки</h2>
+          <ul className={styles.ingredientTable + ' pl-4 pr-4'}>
+            {data.map((item) => {
+              if (item.type === 'bun') {
+                return (
+                  <BurgerIngredient
+                    key={item._id}
+                    data={item}
+                    setActive={props.setActive}
+                  />
+                );
+              }
+            })}
+          </ul>
         </section>
-    )
+        <section
+          className={styles.ingredientsSection + ' pt-10'}
+          ref={sauceRef}
+        >
+          <h2 className="text text_type_main-medium pb-6">Соусы</h2>
+          <ul className={styles.ingredientTable + ' pl-4 pr-4'}>
+            {data.map((item) => {
+              if (item.type === 'sauce') {
+                return (
+                  <BurgerIngredient
+                    key={item._id}
+                    data={item}
+                    setActive={props.setActive}
+                  />
+                );
+              }
+            })}
+          </ul>
+        </section>
+        <section className={styles.ingredientsSection + ' pt-10'} ref={mainRef}>
+          <h2 className="text text_type_main-medium pb-6">Начинки</h2>
+          <ul className={styles.ingredientTable + ' pl-4 pr-4'}>
+            {data.map((item) => {
+              if (item.type === 'main') {
+                return (
+                  <BurgerIngredient
+                    key={item._id}
+                    data={item}
+                    setActive={props.setActive}
+                  />
+                );
+              }
+            })}
+          </ul>
+        </section>
+      </div>
+    </section>
+  );
+};
+
+BurgerIngredients.propTypes = {
+  setActive: PropTypes.func,
 };
 
 export default BurgerIngredients;

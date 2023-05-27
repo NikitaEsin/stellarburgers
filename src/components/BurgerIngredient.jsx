@@ -7,13 +7,14 @@ import styles from '../styles/BurgerIngredients.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from './Loader';
-import { getIngredient } from '../services/actions/Modals';
+
 import { useDrag } from 'react-dnd';
 
 const BurgerIngredient = (props) => {
-  const { constructorData, bunInOrder } = useSelector(
-    (state) => state.dataReducer
+  const { constructorData, orderBun } = useSelector(
+    (state) => state.mainReducer
   );
+  console.log(props)
 
   const dispatch = useDispatch();
 
@@ -26,7 +27,7 @@ const BurgerIngredient = (props) => {
 
   let counter;
   const amount = constructorData.filter((item) => item._id === id).length;
-  const bunsAmount = bunInOrder.filter((item) => item._id === id).length;
+  const bunsAmount = orderBun.filter((item) => item._id === id).length;
   if (amount > 0) {
     counter = (
       <Counter
@@ -58,7 +59,7 @@ const BurgerIngredient = (props) => {
         className={styles.ingredientCard}
         onClick={() => {
           props.setActive(true);
-          dispatch(getIngredient(props.data));
+          dispatch();
         }}
       >
         {counter}
@@ -79,7 +80,7 @@ const BurgerIngredient = (props) => {
 
 BurgerIngredient.propTypes = {
   data: PropTypes.object.isRequired,
-  setActive: PropTypes.func.isRequired,
+  setActive: PropTypes.func,
 };
 
 export default BurgerIngredient;

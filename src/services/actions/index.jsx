@@ -1,4 +1,10 @@
-import {GET_DATA, GET_DATA_FAIL, GET_DATA_SUCCESS, ADD_ITEM, } from './constants'
+import {
+    GET_DATA,
+    GET_DATA_FAIL,
+    GET_DATA_SUCCESS,
+    ADD_ITEM,
+    REMOVE_ITEM,
+} from './constants'
 import { request } from '../../utils';
 
 export function getData() {
@@ -21,11 +27,20 @@ export function getData() {
 }
 
 export function addItem(itemId, specialId) {
-    return function (dispatch) {
-      dispatch({
-        type: ADD_ITEM,
-        id: itemId,
-        specialId: specialId,
-      });
-    };
-  }
+  return function (dispatch) {
+    dispatch({
+      type: ADD_ITEM,
+      id: itemId,
+      specialId: specialId,
+    });
+  };
+}
+
+export function RemoveItem(specialId) {
+  return function (dispatch) {
+    dispatch({
+      type: REMOVE_ITEM,
+      id: specialId,
+    });
+  };
+}

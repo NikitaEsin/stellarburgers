@@ -4,10 +4,10 @@ import {
   DeleteIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from '../styles/BurgerConstructor.module.css';
-import substract from '../images/Subtract.svg';
+import lock from '../img/lock.svg';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import ConstructorWrapper from './ConstructorWrapper';
+import ConstractorWrapper from './ConstractorWrapper'
 import { REMOVE_ITEM } from '../services/actions/constants';
 import { useDrag, useDrop } from 'react-dnd';
 
@@ -66,11 +66,11 @@ const Constructor = ({ img, id, index, moveElement, data, place }) => {
   let dots;
   if (place === 'top') {
     spot = ' (верх)';
-    icon = <img src={substract} alt="замочек" />;
+    icon = <img src={lock} alt="замочек" />;
     dots = null;
   } else if (place === 'bottom') {
     spot = ' (низ)';
-    icon = <img src={substract} alt="замочек" />;
+    icon = <img src={lock} alt="замочек" />;
     dots = null;
   } else {
     icon = <DeleteIcon type="primary" />;
@@ -90,7 +90,7 @@ const Constructor = ({ img, id, index, moveElement, data, place }) => {
           data-handler-id={handlerId}
         >
           {dots}
-          <ConstructorWrapper place={place} data={data.specialId}>
+          <ConstractorWrapper place={place} data={data.specialId}>
             <div className={styles.itemContainer + ' pl-3'}>
               <img
                 src={data.image}
@@ -123,7 +123,7 @@ const Constructor = ({ img, id, index, moveElement, data, place }) => {
                 {icon}
               </div>
             </div>
-          </ConstructorWrapper>
+          </ConstractorWrapper>
         </div>
       </>
     );

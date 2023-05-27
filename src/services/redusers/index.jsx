@@ -1,8 +1,15 @@
 import { combineReducers } from 'redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { GET_DATA, GET_DATA_SUCCESS, GET_DATA_FAIL, ADD_ITEM } from '../actions/constants';
-
+import { GET_DATA,
+  GET_DATA_SUCCESS,
+  GET_DATA_FAIL,
+  ADD_ITEM,
+  REMOVE_ITEM,
+  MOVE_CONSTRUCTOR_ITEM,
+} from '../actions/constants';
+import update from 'immutability-helper';
+import { orderReducer } from './Modal';
 
 const initialState = {
     dataRequest: false,
@@ -23,10 +30,14 @@ export const mainReducer = (state = initialState, action) => {
           };
         }
         case GET_DATA_SUCCESS: {
+          const buns = action.data.filter((item) => item.type === 'bun');
           return {
             ...state,
             data: action.data,
             dataRequest: false,
+            constructorData: [...state.constructorData],
+            buns: buns,
+
           };
         }
         case GET_DATA_FAIL: {
@@ -38,7 +49,6 @@ export const mainReducer = (state = initialState, action) => {
         }
         case ADD_ITEM: {
           const bun = state.buns.filter((item) => item._id === action.id.id)[0];
-    
           if (bun) {
             return {
               ...state,
@@ -55,12 +65,35 @@ export const mainReducer = (state = initialState, action) => {
             constructorData: [...state.constructorData, modifyedItem],
           };
         }
+        case REMOVE_ITEM: {
+          return {
+            ...state,
+            constructorData: [
+              ...state.constructorData.filter(
+                (item) => item.specialId !== action.id
+              ),
+            ],
+          };
+        }
+        case MOVE_CONSTRUCTOR_ITEM: {
+          return {
+            ...state,
+            constructorData: [
+              ...update(state.constructorData, {
+                $splice: [
+                  [action.dragIndex, 1],
+                  [action.hoverIndex, 0, state.constructorData[action.dragIndex]],
+                ],
+              }),
+            ],
+          };
+        }
             default: 
             return state};
 }
 
 export const rootReducer = combineReducers({
-    mainReducer,
+    mainReducer, orderReducer,
   });
   
   const store = createStore(rootReducer, applyMiddleware(thunk));

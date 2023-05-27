@@ -6,10 +6,15 @@ import done from '../img/done.png'
 
 import {  } from '@ya.praktikum/react-developer-burger-ui-components';
 
+import { useSelector } from "react-redux";
+
 const OrderDetails = () => {
+    const { number } = useSelector(
+        (state) => state.orderReducer
+      );
     return(
         <div className={styles.intel}>
-            <p className={styles.shadow + " text text_type_digits-large pt-30"}>034536</p>
+            <p className={styles.shadow + " text text_type_digits-large pt-30"}>{number}</p>
             <p className="text text_type_main-medium pb-15 pt-8">идентификатор заказа</p>
             <img src={done} alt="" />
             <p className="text text_type_main-small pt-15">Ваш заказ начали готовить</p>
