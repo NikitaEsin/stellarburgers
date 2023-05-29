@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import styles from './styles/App.module.css'
-import Header from './components/Header';
-import BurgerIngredients from './components/BurgerIngredients';
-import BurgerConstructor from './components/BurgerConstructor';
-import Modal from './components/Modal';
-import OrderDetails from './components/OrderDetails';
-import IngredientDetails from './components/IngredientDetails';
+import styles from '../styles/App.module.css'
+import Header from './Header';
+import BurgerIngredients from './BurgerIngredients';
+import BurgerConstructor from './BurgerConstructor';
+import Modal from './Modal';
+import OrderDetails from './OrderDetails';
+import IngredientDetails from './IngredientDetails';
 import { useDispatch, useSelector } from 'react-redux';
-import { getData } from './services/actions';
+import { getData } from '../services/actions';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
@@ -35,8 +35,8 @@ function App() {
     <Modal activator={popupOrderActiv} setActivator={setPopupOrderActiv}><OrderDetails/></Modal>
     <Modal activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}><IngredientDetails/></Modal>
     <DndProvider backend={HTML5Backend}>
-      <BurgerIngredients data={data} activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}/>
-      <BurgerConstructor data={data} activator={popupOrderActiv} setActivator={setPopupOrderActiv}/>
+      <BurgerIngredients activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}/>
+      <BurgerConstructor activator={popupOrderActiv} setActivator={setPopupOrderActiv}/>
     </DndProvider>
   </main>
   </>

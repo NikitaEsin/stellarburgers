@@ -57,7 +57,6 @@ const BurgerConstructor = (props) => {
         </p>
       );
     }
-    console.log()
     return (
       <section className={styles.constructorContainer + ' pt-25'}>
         <ul ref={drop} className={styles.ingredientsList}>
@@ -71,7 +70,7 @@ const BurgerConstructor = (props) => {
                 return (
                   <ItemConstructor
                     data={item}
-                    key={index}
+                    key={item.specialId}
                     img={iconDots}
                     moveElement={moveElement}
                     index={index}

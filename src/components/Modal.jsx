@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React  from "react";
 
 import styles from '../styles/Modal.module.css'
 
@@ -13,21 +13,6 @@ const Modal = (props) => {
         activator: PropTypes.bool.isRequired,
         setActivator: PropTypes.func.isRequired
     }; 
-const isOpen = props.activator
-useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-    function closeByEscape(evt) {
-      if (evt.key === 'Escape') {
-        props.setActivator(false);
-      }
-    }
-    document.addEventListener('keydown', closeByEscape);
-    return () => {
-      document.removeEventListener('keydown', closeByEscape);
-    };
-  }, [isOpen]);
     return (
         <ModalOverlay data={props}>
             <section className={styles.popupOrder}>

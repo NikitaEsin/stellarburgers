@@ -49,7 +49,6 @@ const BurgerIngredient = (props) => {
   } else {
     counter = '';
   }
-console.log(props)
   if (props.data.length > 1) {
     return <Loader />;
   } else {
