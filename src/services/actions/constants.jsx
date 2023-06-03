@@ -6,8 +6,6 @@ export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const MOVE_CONSTRUCTOR_ITEM = 'CONSTRUCTOR_ITEM';
 export const POST_ORDER = 'POST_ORDER';
 export const GET_INGREDIENT_INFO = 'GET_INGREDIENT_INFO';
+export const STORE_TOKEN = 'STORE_TOKEN';
 
 export const baseUrl = 'https://norma.nomoreparties.space/api';
-/*
-export const UPDATE_PRICE = 'UPDATE_PRICE';
-*/

@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import styles from '../styles/App.module.css'
 import Header from './Header';
-import BurgerIngredients from './BurgerIngredients';
-import BurgerConstructor from './BurgerConstructor';
-import Modal from './Modal';
-import OrderDetails from './OrderDetails';
-import IngredientDetails from './IngredientDetails';
+import Main from './Pages/Main';
 import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '../services/actions';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LogIn from './Pages/LogIn';
+import Registration from './Pages/Registration';
+import ForgotPassword from './Pages/ForgotPassword';
+import PasswordRecovery from './Pages/PasswordRecovery'
+import Profile from './Pages/Profile';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,15 +29,25 @@ function App() {
     return <p>Загрузка...</p>;
   } else {
     return(<>
-  <Header />
-  <main className={styles.main}>
-    <Modal activator={popupOrderActiv} setActivator={setPopupOrderActiv}><OrderDetails/></Modal>
-    <Modal activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}><IngredientDetails/></Modal>
-    <DndProvider backend={HTML5Backend}>
-      <BurgerIngredients activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}/>
-      <BurgerConstructor activator={popupOrderActiv} setActivator={setPopupOrderActiv}/>
-    </DndProvider>
-  </main>
+  <Router>
+    <Header />
+    <Routes>
+      <Route path="/" element={
+        <Main 
+          popupIngridiantActiv={popupIngridiantActiv}
+          setPopupIngridiantActiv={setPopupIngridiantActiv}
+          popupOrderActiv={popupOrderActiv}
+          setPopupOrderActiv={setPopupOrderActiv}
+          data={data}
+        />}
+      />
+      <Route path="/login" element={<LogIn />} />
+      <Route path="/register" element={<Registration />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<PasswordRecovery />} />
+      <Route path="/profile" element={<Profile />} />
+    </Routes>
+  </Router>
   </>
 )}}
 
