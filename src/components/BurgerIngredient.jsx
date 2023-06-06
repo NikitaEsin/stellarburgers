@@ -7,7 +7,7 @@ import styles from '../styles/BurgerIngredients.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from './Loader';
-
+import { Link, useLocation } from 'react-router-dom';
 import { useDrag } from 'react-dnd';
 import { getInfo } from '../services/actions/Modal';
 
@@ -15,8 +15,8 @@ const BurgerIngredient = (props) => {
   const { constructorData, orderBun } = useSelector(
     (state) => state.mainReducer
   );
-
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const id = props.data._id;
 
@@ -53,6 +53,11 @@ const BurgerIngredient = (props) => {
     return <Loader />;
   } else {
     return (
+      <Link
+        to={`/ingredients/${props.data._id}`}
+        style={{ textDecoration: 'none', color: '#F2F2F3' }}
+        state={{ background: location }}
+      >
       <li
         ref={dragRef}
         className={styles.ingredientCard}
@@ -73,6 +78,7 @@ const BurgerIngredient = (props) => {
           {props.data.name}
         </p>
       </li>
+      </Link>
     );
   }
 };

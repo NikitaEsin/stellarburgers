@@ -10,7 +10,7 @@ const IngredientDetails = () => {
       );
     return (
         <div className={styles.intel}>
-            <p className="text text_type_main-large pt-10">Детали ингредиента</p>
+            <h1 className="text text_type_main-large pt-10">Детали ингредиента</h1>
             <img src={data.image} alt="" />
             <p className="text text_type_main-medium pt-4">{data.name}</p>
             <div className={styles.list + ' pb-15 pt-8'}>

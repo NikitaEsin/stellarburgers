@@ -14,6 +14,7 @@ const getEmailCode = (email) => {
     method: 'POST',
     headers: {
       authorization: '91089aeb-9e00-4a3f-9cf9-1d0f7117fd38',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       email: email,
@@ -33,7 +34,7 @@ return (
           Восстановление пароля
         </h1>
         <div>
-          <Input type={'email'} placeholder={'Укажите e-mail'} extraClass="mb-6" onChange={(e) => setEmail(e.target.value)}/>
+          <Input type={'email'} placeholder={'Укажите e-mail'} extraClass="mb-6" onChange={(e) => setEmail(e.target.value)} value={email || ''} />
           <Button htmlType="button" type="primary" size="medium" onClick={() => getEmailCode(email)}>
             Восстановить
           </Button>

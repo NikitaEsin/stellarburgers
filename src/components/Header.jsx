@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
     BurgerIcon,
     ListIcon,
@@ -9,15 +8,14 @@ import {
 import { Link } from 'react-router-dom';
 import styles from '../styles/Header.module.css'
 
-const Header = () => {
+const Header = (props) => {
     return(
         <header className={styles.header}>
             <section className={styles.header_section}>
                 <div className={styles.header_container}>
-                    <button className={styles.header_button + ' mt-4 mb-4 pl-5 pr-5'}>
-                        <BurgerIcon className={styles.icon} />
-                        <p className={styles.header_text}>Конструктор</p>
-                    </button>
+                    <Link style={{ textDecoration: 'none' }} to="/">
+                        {props.constructor}
+                    </Link>
                     <button className={styles.header_button + ' mt-4 mb-4 pl-5 pr-5'}>
                         <ListIcon type="secondary" className={styles.icon} />
                         <p className="text text_type_main-default text_color_inactive">Лента заказов</p>
@@ -27,10 +25,7 @@ const Header = () => {
                     <Logo />
                 </div>
                 <Link style={{ textDecoration: 'none' }} to="/profile">
-                <button className={styles.header_button + ' mt-4 mb-4 pl-5 pr-5'}>
-                    <ProfileIcon type="secondary" className={styles.icon} />
-                    <p className="text text_type_main-default text_color_inactive">Личный кабинет</p>
-                </button>
+                    {props.profile}
                 </Link>
             </section>
         </header>

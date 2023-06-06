@@ -7,3 +7,12 @@
   gap: 40px;
 }
 
+.navIcon {
+  display: flex;
+  cursor: pointer;
+  margin-top: 22px;
+}
+
+.activeText {
+  color: #f2f2f3;
+}
