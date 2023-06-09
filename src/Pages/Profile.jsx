@@ -1,8 +1,8 @@
 import React, { useEffect, useState }  from 'react';
 import { Input } from '@ya.praktikum/react-developer-burger-ui-components';
-import styles from '../../styles/Profile.module.css';
+import styles from '../styles/Profile.module.css';
 import { useNavigate } from 'react-router-dom';
-import { request, refresh } from '../../utils';
+import { request, refresh } from '../utils';
 import { BurgerIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 const Profile = (props) => {

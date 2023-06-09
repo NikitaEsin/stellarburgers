@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../../styles/App.module.css'
-import BurgerIngredients from '../BurgerIngredients';
-import BurgerConstructor from '../BurgerConstructor';
-import Modal from '../Modal';
-import OrderDetails from '../OrderDetails';
-import IngredientDetails from '../IngredientDetails';
-import { refresh } from '../../utils';
+import styles from '../styles/App.module.css'
+import BurgerIngredients from '../components/BurgerIngredients';
+import BurgerConstructor from '../components/BurgerConstructor';
+import Modal from '../components/Modal';
+import OrderDetails from '../components/OrderDetails';
+import IngredientDetails from '../components/IngredientDetails';
+import { refresh } from '../utils';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { BurgerIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';

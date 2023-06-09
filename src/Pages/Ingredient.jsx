@@ -1,6 +1,6 @@
 import React from 'react';
-import Loader from '../Loader';
-import styles from '../../styles/IngredientDetails.module.css'
+import Loader from '../components/Loader';
+import styles from '../styles/IngredientDetails.module.css'
 import { useParams } from 'react-router-dom';
 
 const Ingredient = (props) => {

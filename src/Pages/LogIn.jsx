@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styles from '../../styles/LogIn.module.css';
+import styles from '../styles/LogIn.module.css';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { request } from '../../utils';
+import { request } from '../utils';
 
 const LogIn = () => {
   const [email, setEmail] = useState('');
