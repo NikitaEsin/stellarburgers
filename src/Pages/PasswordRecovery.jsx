@@ -2,30 +2,17 @@ import React from 'react';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from '../styles/LogIn.module.css';
 import { Link } from 'react-router-dom';
-import { request } from '../utils';
+import { handleFormSubmit } from '../utils';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { passwordRecovery } from '../services/actions/API'
 
 
 const PasswordRecovery = () => {
-  const [password, setPassword] = useState();
-  const [code, setCode] = useState();
+  const [password, setPassword] = useState('');
+  const [code, setCode] = useState('');
   const navigate = useNavigate();
 
-
-  const PasswordRecovery = (password, code) => {
-    request('/password-reset/reset', {
-      method: 'POST',
-      headers: {
-        authorization: '91089aeb-9e00-4a3f-9cf9-1d0f7117fd38',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        password: password,
-        token: code,
-      }),
-    }).then((res) => navigate('/login', { replace: true }));
-  };
   return (
     <>
       <section className={styles.main}>
@@ -33,7 +20,7 @@ const PasswordRecovery = () => {
           <h1 className={styles.heading + ' text text_type_main-medium mb-6'}>
             Восстановление пароля
           </h1>
-          <div>
+          <form onSubmit={(event) => handleFormSubmit(event, passwordRecovery(password, code), navigate('/login', { replace: true }))}>
             <Input
               type={'password'}
               placeholder={'Введите новый пароль'}
@@ -46,16 +33,16 @@ const PasswordRecovery = () => {
               placeholder={'Введите код из письма'}
               extraClass="mb-6"
               onChange={(e) => setCode(e.target.value)}
+              value={code || ''}
             />
             <Button
-              htmlType="button"
+              htmlType="submit"
               type="primary"
               size="medium"
-              onClick={() => PasswordRecovery(password, code)}
             >
               Сохранить
             </Button>
-          </div>
+          </form>
           <p className="text text_type_main-default text_color_inactive mt-20">
             Вспомнили пароль?{''}
             <Link to="/login">

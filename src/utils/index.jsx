@@ -23,3 +23,8 @@ export function refresh() {
     }),
   }).then((res) => localStorage.setItem('accessToken', res.accessToken));
 }
+
+export function handleFormSubmit(event, func) {
+  event.preventDefault()
+  return func
+}
