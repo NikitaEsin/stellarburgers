@@ -5,12 +5,22 @@ import BurgerConstructor from '../components/BurgerConstructor';
 import Modal from '../components/Modal';
 import OrderDetails from '../components/OrderDetails';
 import IngredientDetails from '../components/IngredientDetails';
-import { refresh } from '../utils';
+import { refresh } from '../services/actions/API';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { BurgerIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { useSelector } from 'react-redux';
 
 const Main = (props) => {
+  const {isLoggedIn} = useSelector(
+    (state) => state.tokenReducer
+  );
+  useEffect(() => {
+    if (!isLoggedIn && localStorage.refresfToken) {
+      refresh();
+    }
+  }, []);
+
   useEffect(() => {
     props.setConstructor(
       <div className={styles.navIcon + ' pt-4 pb-4 ml-5 mr-5'}>
@@ -28,12 +38,6 @@ const Main = (props) => {
         </p>
       </div>
     );
-  }, []);
-
-  useEffect(() => {
-    if (!localStorage.accessToken && localStorage.refresfToken) {
-      refresh();
-    }
   }, []);
 
     return (

@@ -10,6 +10,7 @@ import { GET_DATA,
 } from '../actions/constants';
 import update from 'immutability-helper';
 import { orderReducer, infoReducer } from './Modal';
+import { tokenReducer } from './API';
 
 const initialState = {
     dataRequest: false,
@@ -93,7 +94,7 @@ export const mainReducer = (state = initialState, action) => {
 }
 
 export const rootReducer = combineReducers({
-    mainReducer, orderReducer, infoReducer,
+    mainReducer, orderReducer, infoReducer, tokenReducer,
   });
   
   const store = createStore(rootReducer, applyMiddleware(thunk));

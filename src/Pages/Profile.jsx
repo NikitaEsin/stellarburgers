@@ -2,14 +2,21 @@ import React, { useEffect, useState }  from 'react';
 import { Input } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from '../styles/Profile.module.css';
 import { useNavigate } from 'react-router-dom';
-import { request, refresh } from '../utils';
+import { refresh } from '../services/actions/API';
+import { request } from '../utils'
 import { BurgerIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { DELETE_TOKEN } from '../services/actions/constants';
 
 const Profile = (props) => {
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const {isLoggedIn, token} = useSelector(
+      (state) => state.tokenReducer
+    );
+    const dispatch = useDispatch()
 
     useEffect(() => {
       props.setConstructor(
@@ -31,7 +38,7 @@ const Profile = (props) => {
     }, []);
 
     useEffect(() => {
-      if (!localStorage.accessToken) {
+      if (!isLoggedIn) {
         refresh();
       }
     }, []);
@@ -48,7 +55,7 @@ const Profile = (props) => {
         }),
       }).then((res) => {
         navigate('/', { replace: true });
-        localStorage.removeItem('accessToken');
+        dispatch({type: DELETE_TOKEN})
         localStorage.removeItem('refreshToken');
       });
     };
@@ -57,7 +64,7 @@ const Profile = (props) => {
         request('/auth/user', {
           method: 'GET',
           headers: {
-            authorization: localStorage.accessToken,
+            authorization: token,
             'Content-Type': 'application/json',
           },
         }).then((res) => {
@@ -71,7 +78,7 @@ const Profile = (props) => {
       request('/auth/user', {
         method: 'PATCH',
         headers: {
-          authorization: localStorage.accessToken,
+          authorization: token,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({

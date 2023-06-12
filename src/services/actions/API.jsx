@@ -1,4 +1,5 @@
-import {request} from '../../utils/index'
+import {request} from '../../utils'
+import { DELETE_TOKEN, GET_TOKEN } from './constants';
 
 export const register = (email, password, name, navigate) => {
     request('/auth/register', {
@@ -51,6 +52,7 @@ export const getEmailCode = (email, navigate) => {
 };
 
 export const auth = (email, password, navigate) => {
+  return function (dispatch) {
     request('/auth/login', {
       method: 'POST',
       headers: {
@@ -63,7 +65,7 @@ export const auth = (email, password, navigate) => {
       }),
     }).then((res) => {
       if (res.success) {
-        localStorage.setItem('accessToken', res.accessToken);
+        dispatch({type:GET_TOKEN, token:res.accessToken})
         localStorage.setItem('refreshToken', res.refreshToken);
         setTimeout(() => {
           localStorage.removeItem('accessToken');
@@ -71,4 +73,26 @@ export const auth = (email, password, navigate) => {
         return navigate;
       }
     });
-};
+}};
+
+export function refresh() {
+  return function (dispatch) {
+  request('/auth/token', {
+    method: 'POST',
+    headers: {
+      authorization: '91089aeb-9e00-4a3f-9cf9-1d0f7117fd38',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      token: localStorage.refreshToken,
+    }),
+  }).then((res) => dispatch({type:GET_TOKEN, token:res.accessToken}));
+}}
+
+export function removeToken() {
+  return function (dispatch) {
+    dispatch({
+      type: DELETE_TOKEN,
+    });
+  };
+}

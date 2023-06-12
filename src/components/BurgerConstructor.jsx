@@ -62,7 +62,7 @@ const BurgerConstructor = (props) => {
 
     const handleButtonClick = () => {
       if (localStorage.refreshToken) {
-        props.setActive(true);
+        props.setActivator(true);
         dispatch(postOrder(ids));
       } else {
         navigate('/login', { replace: true });

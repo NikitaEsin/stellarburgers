@@ -4,12 +4,14 @@ import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-component
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { handleFormSubmit } from '../utils';
-import { auth } from '../services/actions/API'
+import { auth } from '../services/actions/API';
+import { useDispatch } from 'react-redux';
 
 const LogIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <section className={styles.main}>
@@ -17,7 +19,7 @@ const LogIn = () => {
         <h1 className={styles.heading + ' text text_type_main-medium mb-6'}>
           Вход
         </h1>
-        <form onSubmit={(event) => handleFormSubmit(event, auth(email, password), navigate('/', { replace: true }))}>
+        <form onSubmit={(event) => handleFormSubmit(event, dispatch(auth(email, password, navigate('/', { replace: true }))))}>
           <Input type={'email'} placeholder={'E-mail'} extraClass="mb-6" onChange={(e) => setEmail(e.target.value)} value={email || ''}  />
           <Input type={'password'} placeholder={'Пароль'} icon={'ShowIcon'} extraClass="mb-6" onChange={(e) => setPassword(e.target.value)} value={password || ''} />
           <Button htmlType="submit" type="primary" size="medium" >
@@ -46,3 +48,4 @@ const LogIn = () => {
 };
 
 export default LogIn;
+
