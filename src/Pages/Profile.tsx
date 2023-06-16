@@ -7,19 +7,28 @@ import { request } from '../utils'
 import { BurgerIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { DELETE_TOKEN } from '../services/actions/constants';
+import { FC } from 'react';
 
-const Profile = (props) => {
+interface IProfile {
+  setConstructor: any;
+  setProfile: any}
+
+  const Profile: FC<IProfile> = ({
+    setConstructor,
+    setProfile
+  }) => {
+
     const navigate = useNavigate();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [name, setName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
     const {isLoggedIn, token} = useSelector(
-      (state) => state.tokenReducer
+      (state: any) => state.tokenReducer
     );
     const dispatch = useDispatch()
 
     useEffect(() => {
-      props.setConstructor(
+      setConstructor(
         <div className={styles.navIcon + ' pt-4 pb-4 ml-5 mr-5'}>
           <BurgerIcon type="secondary" />
           <p className="text text_type_main-default text_color_inactive pl-2">
@@ -27,7 +36,7 @@ const Profile = (props) => {
           </p>
         </div>
       );
-      props.setProfile(
+      setProfile(
         <div className={styles.navIcon + ' pt-4 pb-4 ml-5 mr-5'}>
           <ProfileIcon type="primary" />
           <p className={styles.activeText + ' text text_type_main-default  pl-2'}>
@@ -74,7 +83,7 @@ const Profile = (props) => {
         });
       };
     
-    const editUserInfo = (name, email, password) => {
+    const editUserInfo = (name: string, email: string, password: string) => {
       request('/auth/user', {
         method: 'PATCH',
         headers: {
@@ -94,7 +103,7 @@ const Profile = (props) => {
     }, []);
     
     useEffect(() => {
-      function onEnter(evt) {
+      function onEnter(evt: any) {
         if (evt.key === 'Enter') {
           editUserInfo(name, email, password);
         }

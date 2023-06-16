@@ -8,10 +8,10 @@ import { auth } from '../services/actions/API';
 import { useDispatch } from 'react-redux';
 
 const LogIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
 
   return (
     <section className={styles.main}>

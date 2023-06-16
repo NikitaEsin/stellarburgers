@@ -1,22 +1,24 @@
 import React, {useEffect} from "react";
-
 import styles from '../styles/ModalOverlay.module.css'
+import { useNavigate } from 'react-router-dom';
+import { FC } from 'react';
 
-import PropTypes from 'prop-types';
+interface IModalOverlay {
+  activator: boolean;
+  children?: any;
+  setActivator: any;
+}
 
-const ModalOverlay = (props) => {
-    ModalOverlay.propTypes = {
-        activator: PropTypes.bool,
-        setActivator: PropTypes.func
-    }; 
-    const isOpen = props.data.activator
+const ModalOverlay: FC<IModalOverlay> = ({ activator, children, setActivator }) => {
+  const navigate = useNavigate();
+  const isOpen = activator;
 useEffect(() => {
     if (!isOpen) {
       return;
     }
-    function closeByEscape(evt) {
+    function closeByEscape(evt: any) {
       if (evt.key === 'Escape') {
-        props.data.setActivator(false);
+        setActivator(false);
       }
     }
     document.addEventListener('keydown', closeByEscape);
@@ -24,15 +26,14 @@ useEffect(() => {
       document.removeEventListener('keydown', closeByEscape);
     };
   }, [isOpen]);
-  console.log(props)
     return (
-        <div className={props.data.activator ? styles.popupOverlayActiv : styles.popupOverlay}
+        <div className={activator ? styles.popupOverlayActiv : styles.popupOverlay}
         onMouseDown={(event) => {
             if (event.target === event.currentTarget) {
-                props.data.setActivator(false)
+                setActivator(false)
             }
         }}>
-            {props.children}
+            {children}
         </div>
     );
 };

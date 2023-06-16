@@ -1,20 +1,25 @@
 import React, { useEffect } from "react";
-
 import styles from '../styles/Table.module.css'
-
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
+import { FC } from 'react';
 
-const Table = (props) => {
-    const [current, setCurrent] = React.useState('one')
+interface ITable {
+  bun: boolean;
+  sauce: boolean;
+  main: boolean;
+}
+
+  const Table: FC<ITable> = ({ bun, sauce, main }) => {
+    const [current, setCurrent] = React.useState<string>('one')
     useEffect(() => {
-      if (props.bun) {
+      if (bun) {
         setCurrent('one');
-      } else if (props.sauce) {
+      } else if (sauce) {
         setCurrent('two');
-      } else if (props.main) {
+      } else if (main) {
         setCurrent('three');
       }
-    }, [props.bun, props.sauce, props.main])
+    }, [bun, sauce, main])
     return (
       <div className={styles.table}>
         <Tab value="one" active={current === 'one'} onClick={setCurrent}>

@@ -21,7 +21,7 @@ const initialState = {
     orderBun: [],
   }
 
-export const mainReducer = (state = initialState, action) => {
+export const mainReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case GET_DATA: {
           return {
@@ -31,7 +31,7 @@ export const mainReducer = (state = initialState, action) => {
           };
         }
         case GET_DATA_SUCCESS: {
-          const buns = action.data.filter((item) => item.type === 'bun');
+          const buns = action.data.filter((item: any) => item.type === 'bun');
           return {
             ...state,
             data: action.data,
@@ -49,14 +49,14 @@ export const mainReducer = (state = initialState, action) => {
           };
         }
         case ADD_ITEM: {
-          const bun = state.buns.filter((item) => item._id === action.id.id)[0];
+          const bun = state.buns.filter((item: any) => item._id === action.id.id)[0];
           if (bun) {
             return {
               ...state,
               orderBun: [bun],
             };
           }
-          const newItem = state.data.filter((item) => item._id === action.id.id)[0];
+          const newItem: any = state.data.filter((item: any) => item._id === action.id.id)[0];
           const modifyedItem = {
             ...newItem,
             specialId: action.specialId,
@@ -71,7 +71,7 @@ export const mainReducer = (state = initialState, action) => {
             ...state,
             constructorData: [
               ...state.constructorData.filter(
-                (item) => item.specialId !== action.id
+                (item: any) => item.specialId !== action.id
               ),
             ],
           };

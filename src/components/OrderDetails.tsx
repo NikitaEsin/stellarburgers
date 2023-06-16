@@ -1,16 +1,12 @@
 import React from "react";
-
 import styles from '../styles/OrderDetails.module.css'
-
 import done from '../img/done.png'
-
 import {  } from '@ya.praktikum/react-developer-burger-ui-components';
-
 import { useSelector } from "react-redux";
 
 const OrderDetails = () => {
     const { number } = useSelector(
-        (state) => state.orderReducer
+        (state: any) => state.orderReducer
       );
     return(
         <div className={styles.intel}>

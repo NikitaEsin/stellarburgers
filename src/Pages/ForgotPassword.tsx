@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { getEmailCode } from '../services/actions/API'
 
 const ForgotPassword = () => {
-const [email, setEmail] = useState('');
+const [email, setEmail] = useState<string>('');
 const navigate = useNavigate();
   
 return (

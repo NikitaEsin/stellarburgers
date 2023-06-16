@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styles from '../styles/App.module.css'
+import styles from '../styles/App.module.css';
 import Header from './Header';
 import Main from '../Pages/Main';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +20,7 @@ import IngredientDetails from './IngredientDetails';
 import OrderDetails from './OrderDetails';
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
   const [constructor, setConstructor] = useState(
     <div className={styles.navIcon + ' pt-4 pb-4 ml-5 mr-5'}>
       <BurgerIcon type="primary" />
@@ -38,7 +38,7 @@ function App() {
     </div>
   );
   const { data, dataRequest, dataFailed } = useSelector(
-    (state) => state.mainReducer
+    (state: any) => state.mainReducer
   );
 
   useEffect(() => {

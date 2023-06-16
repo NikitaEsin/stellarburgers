@@ -10,8 +10,18 @@ import { useDispatch } from 'react-redux';
 import ConstractorWrapper from './ConstractorWrapper'
 import { REMOVE_ITEM } from '../services/actions/constants';
 import { useDrag, useDrop } from 'react-dnd';
+import { FC } from 'react';
 
-const Constructor = ({ img, id, index, moveElement, data, place }) => {
+interface IConstructor {
+  img?: any;
+  id?: any;
+  index?: number;
+  moveElement?: any;
+  data?: any;
+  place?: string;
+}
+
+const Constructor: FC<IConstructor> = ({ img, id, index, moveElement, data, place }): any => {
   const dispatch = useDispatch();
 
   const [{ handlerId }, drop] = useDrop({
@@ -21,19 +31,19 @@ const Constructor = ({ img, id, index, moveElement, data, place }) => {
         handlerId: monitor.getHandlerId(),
       };
     },
-    hover(item, monitor) {
+    hover(item: any, monitor) {
       if (!ref.current) {
         return;
       }
       const dragIndex = item.index;
-      const hoverIndex = index;
+      const hoverIndex: any = index;
       if (dragIndex === hoverIndex) {
         return;
       }
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
       const hoverMiddleY =
         (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-      const clientOffset = monitor.getClientOffset();
+      const clientOffset: any = monitor.getClientOffset();
       const hoverClientY = clientOffset.y - hoverBoundingRect.top;
       if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
         return;
@@ -57,7 +67,7 @@ const Constructor = ({ img, id, index, moveElement, data, place }) => {
       isDragging: monitor.isDragging(),
     }),
   });
-  const ref = React.useRef(null);
+  const ref: any = React.useRef(null);
 
   drag(drop(ref));
 
@@ -128,11 +138,6 @@ const Constructor = ({ img, id, index, moveElement, data, place }) => {
       </>
     );
   }
-};
-
-Constructor.propTypes = {
-  data: PropTypes.object,
-  place: PropTypes.string,
 };
 
 export default Constructor;

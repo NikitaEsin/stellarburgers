@@ -1,29 +1,31 @@
 import React  from "react";
-
 import styles from '../styles/Modal.module.css'
-
 import {  } from '@ya.praktikum/react-developer-burger-ui-components';
-
 import PropTypes from 'prop-types';
+import ModalOverlay from './ModalOverlay';
+import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import ModalOverlay from "./ModalOverlay";
+interface IModal {
+    activator: boolean;
+    children?: any;
+    setActivator: any;
+  }  
 
-const Modal = (props) => {
-    Modal.propTypes = {
-        activator: PropTypes.bool.isRequired,
-        setActivator: PropTypes.func.isRequired
-    }; 
+const Modal: FC<IModal> = ({ activator, children, setActivator }) => {
+    const navigate = useNavigate();
     return (
-        <ModalOverlay data={props}>
+        <ModalOverlay activator={activator} setActivator={setActivator}>
             <section className={styles.popupOrder}>
                 <div className={styles.popupContainer}>
                     <button 
                     className={styles.CloseIcon} 
                     onClick={() => {
-                        props.setActivator(false)
+                        setActivator(false)
+                        navigate('/', { replace: true });
                     }}>
                     </button>
-                    {props.children}
+                    {children}
                 </div>
             </section>
         </ModalOverlay>

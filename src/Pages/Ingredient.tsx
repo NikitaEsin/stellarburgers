@@ -2,18 +2,28 @@ import React from 'react';
 import Loader from '../components/Loader';
 import styles from '../styles/IngredientDetails.module.css'
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { FC } from "react";
 
-const Ingredient = (props) => {
+interface IIngredient {
+  constructor: any,
+  profile?: any,
+  data: any
+}
+
+const Ingredient: FC<IIngredient> = ({constructor, profile}) => {
+
   let { _id } = useParams();
+  const { data } = useSelector((state: any) => state.dataReducer);
 
-  if (props.data.length < 1) {
+  if (data.length < 1) {
     return <Loader />;
   } else {
     return (
       <>
-        {props.data
-          .filter((item) => item._id === _id)
-          .map((item, index) => {
+        {data
+          .filter((item: any) => item._id === _id)
+          .map((item: any, index: number) => {
             return (
               <section key={index}>
                 <div className={styles.ingredientDetails + ' pt-10 pl-10'}>

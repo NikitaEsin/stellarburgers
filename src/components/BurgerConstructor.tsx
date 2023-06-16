@@ -1,4 +1,4 @@
-import { React } from 'react';
+import  React  from 'react';
 import styles from '../styles/BurgerConstructor.module.css';
 import ItemConstructor from './ItemConstructor';
 import {
@@ -17,14 +17,20 @@ import iconDots from '../img/icondots.svg';
 import { MOVE_CONSTRUCTOR_ITEM } from '../services/actions/constants';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FC } from 'react';
 
-const BurgerConstructor = (props) => {
+interface IBurgerConstructor {
+  setActivator: any;
+  activator: any
+}
+
+const BurgerConstructor: FC<IBurgerConstructor> = ({ setActivator }) => {
   const { data, constructorData, orderBun } = useSelector(
-    (state) => state.mainReducer
+    (state: any) => state.mainReducer
   );
   const navigate = useNavigate();
 
-  const moveElement = useCallback((dragIndex, hoverIndex) => {
+  const moveElement = useCallback((dragIndex: number, hoverIndex: number) => {
     dispatch({
       type: MOVE_CONSTRUCTOR_ITEM,
       dragIndex,
@@ -32,11 +38,11 @@ const BurgerConstructor = (props) => {
     });
   }, []);
 
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
 
   const [, drop] = useDrop({
     accept: 'ingredient',
-    drop(itemId) {
+    drop(itemId: string) {
       const specialId  = uuidv4();
       dispatch(addItem(itemId, specialId ));
     },
@@ -46,7 +52,7 @@ const BurgerConstructor = (props) => {
     return <Loader />;
   } else {
     const ids = [data[0]._id, data[0]._id];
-    let priceArray = [];
+    let priceArray: [number?, number?] = [];
     if (orderBun.length > 0) {
       priceArray = [orderBun[0].price, orderBun[0].price];
     }
@@ -62,7 +68,7 @@ const BurgerConstructor = (props) => {
 
     const handleButtonClick = () => {
       if (localStorage.refreshToken) {
-        props.setActivator(true);
+        setActivator(true);
         dispatch(postOrder(ids));
       } else {
         navigate('/login', { replace: true });
@@ -75,7 +81,7 @@ const BurgerConstructor = (props) => {
           {announce}
           <ItemConstructor data={orderBun[0]} place="top" />
           <div className={styles.scroll}>
-            {constructorData.map((item, index) => {
+            {constructorData.map((item: any, index: number) => {
               if (item.type !== 'bun') {
                 ids.push(item._id);
                 priceArray.push(item.price);
@@ -87,7 +93,6 @@ const BurgerConstructor = (props) => {
                     moveElement={moveElement}
                     index={index}
                     id={item._id}
-                    element={item}
                   />
                 );
               }
@@ -99,7 +104,7 @@ const BurgerConstructor = (props) => {
           <p className="text text_type_digits-medium mr-2">
             <PriceInTotal price={priceArray} />
           </p>
-          <CurrencyIcon />
+          <CurrencyIcon type="primary" />
           <div className={styles.buttonWrapper}>
             <Button
               htmlType="button"
@@ -116,10 +121,6 @@ const BurgerConstructor = (props) => {
       </section>
     );
   }
-};
-
-BurgerConstructor.propTypes = {
-  setActive: PropTypes.func,
 };
 
 export default BurgerConstructor;

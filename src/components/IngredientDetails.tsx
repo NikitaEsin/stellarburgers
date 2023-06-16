@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const IngredientDetails = () => {
     const { data } = useSelector(
-        (state) => state.infoReducer
+        (state: any) => state.infoReducer
       );
     return (
         <div className={styles.intel}>

@@ -9,8 +9,8 @@ import { passwordRecovery } from '../services/actions/API'
 
 
 const PasswordRecovery = () => {
-  const [password, setPassword] = useState('');
-  const [code, setCode] = useState('');
+  const [password, setPassword] = useState<string>('');
+  const [code, setCode] = useState<string>('');
   const navigate = useNavigate();
 
   return (

@@ -10,10 +10,21 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { BurgerIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector } from 'react-redux';
+import { FC } from 'react';
 
-const Main = (props) => {
+interface IMain  {
+  popupOrderActiv: any,
+  popupIngridiantActiv: any,
+  data: any,
+  setPopupOrderActiv: any,
+  setPopupIngridiantActiv: any,
+  setConstructor: any,
+  setProfile: any
+}
+
+const Main: FC<IMain> = ({popupOrderActiv, setPopupOrderActiv, data, popupIngridiantActiv, setPopupIngridiantActiv, setProfile, setConstructor}) => {
   const {isLoggedIn} = useSelector(
-    (state) => state.tokenReducer
+    (state: any) => state.tokenReducer
   );
   useEffect(() => {
     if (!isLoggedIn && localStorage.refresfToken) {
@@ -22,7 +33,7 @@ const Main = (props) => {
   }, []);
 
   useEffect(() => {
-    props.setConstructor(
+    setConstructor(
       <div className={styles.navIcon + ' pt-4 pb-4 ml-5 mr-5'}>
         <BurgerIcon type="primary" />
         <p className={styles.activeText + ' text text_type_main-default pl-2'}>
@@ -30,7 +41,7 @@ const Main = (props) => {
         </p>
       </div>
     );
-    props.setProfile(
+    setProfile(
       <div className={styles.navIcon + ' pt-4 pb-4 ml-5 mr-5'}>
         <ProfileIcon type="secondary" />
         <p className="text text_type_main-default text_color_inactive pl-2">
@@ -43,10 +54,10 @@ const Main = (props) => {
     return (
       <>
       <main className={styles.main}>
-      <Modal activator={props.popupOrderActiv} setActivator={props.setPopupOrderActiv}><OrderDetails/></Modal>
+      <Modal activator={popupOrderActiv} setActivator={setPopupOrderActiv}><OrderDetails/></Modal>
       <DndProvider backend={HTML5Backend}>
-        <BurgerIngredients activator={props.popupIngridiantActiv} setActivator={props.setPopupIngridiantActiv}/>
-        <BurgerConstructor activator={props.popupOrderActiv} setActivator={props.setPopupOrderActiv}/>
+        <BurgerIngredients activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}/>
+        <BurgerConstructor activator={popupOrderActiv} setActivator={setPopupOrderActiv}/>
       </DndProvider>
       </main>
       </>

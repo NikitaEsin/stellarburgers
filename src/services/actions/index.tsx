@@ -8,7 +8,7 @@ import {
 import { request } from '../../utils';
 
 export function getData() {
-    return function (dispatch) {
+    return function (dispatch: any) {
         dispatch({
             type: GET_DATA,
         });
@@ -26,8 +26,8 @@ export function getData() {
     }
 }
 
-export function addItem(itemId, specialId) {
-  return function (dispatch) {
+export function addItem(itemId: string, specialId: string) {
+  return function (dispatch: any) {
     dispatch({
       type: ADD_ITEM,
       id: itemId,
@@ -36,8 +36,8 @@ export function addItem(itemId, specialId) {
   };
 }
 
-export function RemoveItem(specialId) {
-  return function (dispatch) {
+export function RemoveItem(specialId: string) {
+  return function (dispatch: any) {
     dispatch({
       type: REMOVE_ITEM,
       id: specialId,
