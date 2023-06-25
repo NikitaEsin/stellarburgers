@@ -6,5 +6,5 @@ export const SignedProtectedRoute = ({ element }: any) => {
     (state: any) => state.tokenReducer
   );
   const location = useLocation()
-  return isLoggedIn ? <Navigate to="/login" state={{ from: location}}/> : element;
+  return isLoggedIn ? <Navigate to="/" state={{ from: location}}/> : element;
 };

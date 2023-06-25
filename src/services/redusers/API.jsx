@@ -6,9 +6,6 @@ export const tokenReducer = (
   ) => {
     switch (action.type) {
       case GET_TOKEN: {
-        setTimeout(() => {
-          state.isLoggedIn = false;
-        }, 1200000);
         return {
           ...state,
           token: action.token,
