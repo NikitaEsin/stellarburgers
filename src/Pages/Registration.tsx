@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from '../styles/LogIn.module.css';
 import { handleFormSubmit } from '../utils';
@@ -19,7 +19,7 @@ const Registration = () => {
         <h1 className={styles.heading + ' text text_type_main-medium mb-6'}>
           Регистрация
         </h1>
-        <form onSubmit={(event) => handleFormSubmit(event, register(email, password, name), navigate('/login', { replace: true }))}>
+        <form onSubmit={(event: FormEvent<HTMLFormElement>) => handleFormSubmit(event, register(email, password, name, () => navigate('/login', { replace: true })))}>
           <Input type={'text'} placeholder={'Имя'} extraClass="mb-6" onChange={(e) => setName(e.target.value)} value={name || ''}/>
           <Input type={'email'} placeholder={'e-mail'} extraClass="mb-6" onChange={(e) => setEmail(e.target.value)} value={email || ''}/>
           <Input type={'password'} placeholder={'Пароль'} icon={'ShowIcon'} extraClass="mb-6" onChange={(e) => setPassword(e.target.value)} value={password || ''}/>

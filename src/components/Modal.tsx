@@ -10,6 +10,7 @@ interface IModal {
     activator: boolean;
     children?: any;
     setActivator: any;
+    data?: any;
   }  
 
 const Modal: FC<IModal> = ({ activator, children, setActivator }) => {

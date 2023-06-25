@@ -1,13 +1,24 @@
-import React from "react";
-
+import React, { useEffect } from "react";
 import styles from '../styles/IngredientDetails.module.css'
+import Loader from './Loader';
+import { useAppSelector } from '../Hooks/Hooks';
+import { FC } from 'react';
 
-import { useSelector } from "react-redux";
+interface IIngredientDetails {
+  info: any;
+  setActivator: any;
+}
 
-const IngredientDetails = () => {
-    const { data } = useSelector(
-        (state: any) => state.infoReducer
-      );
+const IngredientDetails: FC<IIngredientDetails> = ({ info, setActivator }) => {
+    const { data } = useAppSelector((state: any) => state.infoReducer);
+
+    useEffect(() => {
+        setActivator(true);
+      }, []);
+    
+      if (data.length < 1) {
+        return <Loader />;
+      } else {
     return (
         <div className={styles.intel}>
             <h1 className="text text_type_main-large pt-10">Детали ингредиента</h1>
@@ -33,6 +44,6 @@ const IngredientDetails = () => {
             </div>
         </div>
     );
-};
+}};
 
 export default IngredientDetails;

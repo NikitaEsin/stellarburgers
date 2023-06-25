@@ -17,7 +17,11 @@ import Ingredient from '../Pages/Ingredient';
 import { useLocation } from 'react-router-dom';
 import Modal from './Modal';
 import IngredientDetails from './IngredientDetails';
-import OrderDetails from './OrderDetails';
+import Feed from '../Pages/Feed'
+import ProfileOrders from '../Pages/ProfileOrders'
+import Order from '../Pages/Order';
+
+
 
 function App() {
   const dispatch: any = useDispatch();
@@ -45,8 +49,10 @@ function App() {
     dispatch(getData())
   }, [])
 
-  const [popupOrderActiv, setPopupOrderActiv] = useState(false)
-  const [popupIngridiantActiv, setPopupIngridiantActiv] = useState(false)
+  const [popupOrderActiv, setPopupOrderActiv] = useState<boolean>(false)
+  const [popupIngridiantActiv, setPopupIngridiantActiv] = useState<boolean>(false)
+  const [popupOrderItemActive, setPopupOrderItemActive] = useState<boolean>(false);
+  const [popupProfileOrderActive, setPopupProfileOrderActive] = useState<boolean>(false);
 
   const location = useLocation();
   const background = location.state && location.state.background;
@@ -74,16 +80,18 @@ function App() {
       <Route path="/register" element={<SignedProtectedRoute element={<Registration />} />} />
       <Route path="/forgot-password" element={<SignedProtectedRoute element={<ForgotPassword />} />} />
       <Route path="/reset-password" element={<SignedProtectedRoute element={<PasswordRecovery />} />} />
-      <Route path="/profile" element={<NotSignedProtectedRoute element={<Profile setConstructor={setConstructor} setProfile={setProfile} />} />} />
+      <Route path="/profile" element={<NotSignedProtectedRoute element={<Profile />} />} />
       <Route path="/ingredients/:_id" element={<Ingredient data={data} />} />
+      <Route path="/feed" element={<Feed setActivator={setPopupOrderItemActive} />}/>
+      <Route path="/feed/:_id" element={<Order />} />
+      <Route path="/profile/orders" element={<NotSignedProtectedRoute element={<ProfileOrders setActivator={setPopupProfileOrderActive} />}/>}/>
+      <Route path="/profile/orders/:_id" element={<NotSignedProtectedRoute element={<Order />} />}/>
     </Routes>
     {background && (
       <Routes>
-        <Route path='/ingredients/:_id'
-        element={
-          <Modal activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}><IngredientDetails/></Modal>
-        }>
-        </Route>
+        <Route path='/ingredients/:_id' element={<Modal data={data} activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}><IngredientDetails info={data} setActivator={setPopupOrderActiv}/></Modal>}/>
+        <Route path="/feed/:_id" element={<Modal data={data} activator={popupOrderItemActive} setActivator={setPopupOrderItemActive}><Order /></Modal>}/>
+        <Route path="/profile/orders/:_id" element={<Modal data={data} activator={popupProfileOrderActive} setActivator={setPopupProfileOrderActive}><Order /></Modal>}/>
       </Routes>
     )}
   </>

@@ -5,24 +5,25 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from '../styles/BurgerIngredients.module.css';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../Hooks/Hooks';
 import Loader from './Loader';
 import { Link, useLocation } from 'react-router-dom';
 import { useDrag } from 'react-dnd';
 import { getInfo } from '../services/actions/Modal';
 import { FC } from 'react';
+import { TIngredient } from '../services/redusers';
 
 interface IBurgerIngredient {
   data: any;
   setActivator: any;
 }
 const BurgerIngredient: FC<IBurgerIngredient> = ({ data, setActivator }) => {
-  const { constructorData, orderBun } = useSelector(
-    (state: any) => state.mainReducer
+  const { constructorData, bunInOrder } = useAppSelector(
+    (state) => state.mainReducer
   );
-  const dispatch: any = useDispatch();
+  
+  const dispatch = useAppDispatch();
   const location = useLocation();
-
   const id = data._id;
 
   const [, dragRef] = useDrag({
@@ -30,9 +31,14 @@ const BurgerIngredient: FC<IBurgerIngredient> = ({ data, setActivator }) => {
     item: { id },
   });
 
-  let counter;
-  const amount = constructorData.filter((item: any) => item._id === id).length;
-  const bunsAmount = orderBun.filter((item: any) => item._id === id).length;
+  
+  if (data.length > 1) {
+    return <Loader />;
+  } else {
+    let counter;
+  const amount = constructorData.filter((item: TIngredient) => item._id === id).length;
+    const bunsAmount = bunInOrder.filter((item: TIngredient) => item._id === id).length;
+  
   if (amount > 0) {
     counter = (
       <Counter
@@ -52,9 +58,6 @@ const BurgerIngredient: FC<IBurgerIngredient> = ({ data, setActivator }) => {
   } else {
     counter = '';
   }
-  if (data.length > 1) {
-    return <Loader />;
-  } else {
     return (
       <Link
         to={`/ingredients/${data._id}`}

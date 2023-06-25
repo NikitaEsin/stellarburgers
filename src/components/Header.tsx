@@ -23,10 +23,12 @@ const Header: FC<IHeader> = ({constructor, profile}) => {
                     <Link style={{ textDecoration: 'none' }} to="/">
                         {constructor}
                     </Link>
-                    <button className={styles.header_button + ' mt-4 mb-4 pl-5 pr-5'}>
-                        <ListIcon type="secondary"  />
-                        <p className="text text_type_main-default text_color_inactive">Лента заказов</p>
-                    </button>
+                    <Link style={{ textDecoration: 'none' }} to="/feed">
+                      <button className={styles.header_button + ' mt-4 mb-4 pl-5 pr-5'}>
+                          <ListIcon type="secondary"  />
+                          <p className="text text_type_main-default text_color_inactive">Лента заказов</p>
+                      </button>
+                    </Link>
                 </div>
                 <div className={styles.logo}>
                     <Logo />

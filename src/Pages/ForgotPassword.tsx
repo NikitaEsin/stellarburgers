@@ -17,7 +17,7 @@ return (
         <h1 className={styles.heading + ' text text_type_main-medium mb-6'}>
           Восстановление пароля
         </h1>
-        <form onSubmit={(event) => handleFormSubmit(event, getEmailCode(email), navigate('/reset-password', { replace: true }))}>
+        <form onSubmit={(event) => handleFormSubmit(event, getEmailCode(email, () => navigate('/reset-password', { replace: true })))}>
           <Input type={'email'} placeholder={'Укажите e-mail'} extraClass="mb-6" onChange={(e) => setEmail(e.target.value)} value={email || ''} />
           <Button htmlType="submit" type="primary" size="medium">
             Восстановить

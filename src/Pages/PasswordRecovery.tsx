@@ -6,13 +6,20 @@ import { handleFormSubmit } from '../utils';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { passwordRecovery } from '../services/actions/API'
+import { Navigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 const PasswordRecovery = () => {
   const [password, setPassword] = useState<string>('');
   const [code, setCode] = useState<string>('');
   const navigate = useNavigate();
+  const privRoute = useLocation();
 
+  if (
+    privRoute.state &&
+    privRoute.state.prevRoute.pathname === '/forgot-password'
+  ) {
   return (
     <>
       <section className={styles.main}>
@@ -20,7 +27,7 @@ const PasswordRecovery = () => {
           <h1 className={styles.heading + ' text text_type_main-medium mb-6'}>
             Восстановление пароля
           </h1>
-          <form onSubmit={(event) => handleFormSubmit(event, passwordRecovery(password, code), navigate('/login', { replace: true }))}>
+          <form onSubmit={(event) => handleFormSubmit(event, passwordRecovery(password, code, () => navigate('/login', { replace: true })))}>
             <Input
               type={'password'}
               placeholder={'Введите новый пароль'}
@@ -59,7 +66,10 @@ const PasswordRecovery = () => {
         </div>
       </section>
     </>
-  );
+    );
+  } else {
+    return <Navigate to="/forgot-password" replace />;
+  }
 };
 
 export default PasswordRecovery;

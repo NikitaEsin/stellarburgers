@@ -25,7 +25,7 @@ interface IBurgerConstructor {
 }
 
 const BurgerConstructor: FC<IBurgerConstructor> = ({ setActivator }) => {
-  const { data, constructorData, orderBun } = useSelector(
+  const { data, constructorData, bunInOrder } = useSelector(
     (state: any) => state.mainReducer
   );
   const navigate = useNavigate();
@@ -53,12 +53,12 @@ const BurgerConstructor: FC<IBurgerConstructor> = ({ setActivator }) => {
   } else {
     const ids = [data[0]._id, data[0]._id];
     let priceArray: [number?, number?] = [];
-    if (orderBun.length > 0) {
-      priceArray = [orderBun[0].price, orderBun[0].price];
+    if (bunInOrder.length > 0) {
+      priceArray = [bunInOrder[0].price, bunInOrder[0].price];
     }
 
     let announce;
-    if (constructorData.length === 0 && orderBun.length === 0) {
+    if (constructorData.length === 0 && bunInOrder.length === 0) {
       announce = (
         <p className={styles.announce}>
           Пожалуйста, перенесите сюда булку и ингредиенты для создания заказа
@@ -79,7 +79,7 @@ const BurgerConstructor: FC<IBurgerConstructor> = ({ setActivator }) => {
       <section className={styles.constructorContainer + ' pt-25'}>
         <ul ref={drop} className={styles.ingredientsList}>
           {announce}
-          <ItemConstructor data={orderBun[0]} place="top" />
+          <ItemConstructor data={bunInOrder[0]} place="top" />
           <div className={styles.scroll}>
             {constructorData.map((item: any, index: number) => {
               if (item.type !== 'bun') {
@@ -98,7 +98,7 @@ const BurgerConstructor: FC<IBurgerConstructor> = ({ setActivator }) => {
               }
             })}
           </div>
-          <ItemConstructor data={orderBun[0]} place="bottom" />
+          <ItemConstructor data={bunInOrder[0]} place="bottom" />
         </ul>
         <div className={styles.totalContainer + ' mt-10 mr-4'}>
           <p className="text text_type_digits-medium mr-2">

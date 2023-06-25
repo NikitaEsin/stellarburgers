@@ -14,7 +14,7 @@ interface IIngredient {
 const Ingredient: FC<IIngredient> = ({constructor, profile}) => {
 
   let { _id } = useParams();
-  const { data } = useSelector((state: any) => state.dataReducer);
+  const { data } = useSelector((state: any) => state.mainReducer);
 
   if (data.length < 1) {
     return <Loader />;
