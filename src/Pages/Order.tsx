@@ -25,7 +25,6 @@ const Order = () => {
         payload: '/all',
       });
     } else {
-      console.log(accessToken);
       dispatch({
         type: WS_CONNECTION,
         payload: `?token=${accessToken}`,

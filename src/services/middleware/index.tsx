@@ -4,6 +4,7 @@ import {
     WS_CONNECTION_CLOSED,
     WS_CONNECTION_ERROR,
     WS_CONNECTION_SUCCESS,
+    WS_CLOSE
   } from '../actions/constants';
   import type { Middleware, MiddlewareAPI } from 'redux';
   import type { AppDispatch, RootState } from '../redusers';
@@ -32,13 +33,19 @@ import {
     readonly type: typeof WS_CONNECTION_SUCCESS;
     readonly payload: string;
   }
+
+  interface IWsCloseAction {
+    readonly type: typeof WS_CLOSE;
+    readonly payload: string;
+  }
   
   type AppActions =
     | IWsConnectionStartAction
     | IWsGetMessageAction
     | IWsConnectionClosedAction
     | IWsConnectionErrorAction
-    | IWsConnectionSuccessAction;
+    | IWsConnectionSuccessAction
+    | IWsCloseAction;
   
   export const socketMiddleware = (wsUrl: string): Middleware => {
     return ((store: MiddlewareAPI<AppDispatch, RootState>) => {
@@ -60,6 +67,7 @@ import {
           };
           socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
+            console.log(data)
             dispatch({
               type: WS_GET_MESSAGE,
               orders: data.orders,
@@ -70,6 +78,10 @@ import {
           socket.onclose = (event) => {
             dispatch({ type: WS_CONNECTION_CLOSED, payload: event });
           };
+        }
+
+        if (type === WS_CLOSE && socket) {
+          socket.close()
         }
   
         next(action);

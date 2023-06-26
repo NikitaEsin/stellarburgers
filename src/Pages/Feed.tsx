@@ -4,7 +4,7 @@ import ScrollList from '../components/Feed/ScrollList';
 import Stats from '../components/Feed/Stats';
 import { useAppDispatch } from '../Hooks/Hooks';
 import {
-  WS_CONNECTION_CLOSED,
+  WS_CLOSE,
   WS_CONNECTION,
 } from '../services/actions/constants';
 import { FC } from 'react';
@@ -14,7 +14,6 @@ interface TFeed {
 }
 
 const Feed: FC<TFeed> = ({ setActivator }) => {
-  const ws = new WebSocket('wss://norma.nomoreparties.space/orders/all');
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -24,7 +23,7 @@ const Feed: FC<TFeed> = ({ setActivator }) => {
     });
     return () => {
       dispatch({
-        type: WS_CONNECTION_CLOSED,
+        type: WS_CLOSE,
       });
     };
   }, []);
