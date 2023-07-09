@@ -31,7 +31,6 @@ const Main: FC<IMain> = ({popupOrderActiv, setPopupOrderActiv, data, popupIngrid
       refresh();
     }
   }, []);
-
   useEffect(() => {
     setConstructor(
       <div className={styles.navIcon + ' pt-4 pb-4 ml-5 mr-5'}>

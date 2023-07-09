@@ -10,8 +10,9 @@ import { TIngredient } from '../../services/redusers';
 
 const OrderContent = () => {
   const { _id } = useParams();
-  const { orders } = useAppSelector((state) => state.wsReducer);
+  const { orders, wsConnected } = useAppSelector((state) => state.wsReducer);
   const { data } = useAppSelector((state) => state.mainReducer);
+
 
   if (orders === undefined) {
     return <Loader />;

@@ -6,6 +6,8 @@ export const tokenReducer = (
   ) => {
     switch (action.type) {
       case GET_TOKEN: {
+        localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('accessToken', action.token);
         return {
           ...state,
           token: action.token,

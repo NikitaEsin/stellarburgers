@@ -6,6 +6,12 @@ import { Provider } from 'react-redux';
 import store from './services/redusers'
 import { BrowserRouter as Router } from 'react-router-dom';
 
+window.onclose = () => {
+  if (localStorage.getItem('isLoggedIn') === 'true') {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('accessToken');
+  }
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root')as HTMLElement);
 root.render(

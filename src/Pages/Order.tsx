@@ -11,7 +11,6 @@ const Order = () => {
   const { _id } = useParams();
   const { token } = useAppSelector((state) => state.tokenReducer);
   let accessToken: string;
-
   if (token !== '') {
     accessToken = token.slice(7);
   } else {
