@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from '../../styles/Feed.module.css';
 import FeedCard from './FeedCard';
-import { useSelector } from 'react-redux';
 import { useAppSelector } from '../../Hooks/Hooks';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -15,8 +14,8 @@ interface TScrollList {
 }
 
 const ScrollList: FC<TScrollList> = ({ setActivator }) => {
-  const { orders } = useAppSelector((state: any) => state.wsReducer);
-  const { data } = useAppSelector((state: any) => state.mainReducer);
+  const { orders } = useAppSelector((state) => state.wsReducer);
+  const { data } = useAppSelector((state) => state.mainReducer);
   const location = useLocation();
 
   const feedIds: Array<Array<string>> = [];
@@ -37,7 +36,7 @@ const ScrollList: FC<TScrollList> = ({ setActivator }) => {
     finalData = orders;
     return (
       <div className={styles.orders}>
-        {finalData.map((order: TOrder, index: number) => {
+        {finalData.map((order, index: number) => {
           return (
             <Link
               key={index}

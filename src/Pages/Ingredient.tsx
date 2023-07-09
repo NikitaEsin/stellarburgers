@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from '../components/Loader';
 import styles from '../styles/IngredientDetails.module.css'
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../Hooks/Hooks';
 import { FC } from "react";
 
 interface IIngredient {
@@ -14,7 +14,7 @@ interface IIngredient {
 const Ingredient: FC<IIngredient> = ({constructor, profile}) => {
 
   let { _id } = useParams();
-  const { data } = useSelector((state: any) => state.mainReducer);
+  const { data } = useAppSelector((state) => state.mainReducer);
 
   if (data.length < 1) {
     return <Loader />;

@@ -9,7 +9,7 @@ import { refresh } from '../services/actions/API';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { BurgerIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../Hooks/Hooks';
 import { FC } from 'react';
 
 interface IMain  {
@@ -23,8 +23,8 @@ interface IMain  {
 }
 
 const Main: FC<IMain> = ({popupOrderActiv, setPopupOrderActiv, data, popupIngridiantActiv, setPopupIngridiantActiv, setProfile, setConstructor}) => {
-  const {isLoggedIn} = useSelector(
-    (state: any) => state.tokenReducer
+  const {isLoggedIn} = useAppSelector(
+    (state) => state.tokenReducer
   );
   useEffect(() => {
     if (!isLoggedIn && localStorage.refresfToken) {

@@ -79,14 +79,14 @@ export const mainReducer = (state = initialState, action: any) => {
           };
         }
         case ADD_ITEM: {
-          const bun = state.buns.filter((item: TIngredient) => item._id === action.id.id)[0];
+          const bun = state.buns.filter((item) => item._id === action.id.id)[0];
           if (bun) {
             return {
               ...state,
               bunInOrder: [bun],
             };
           }
-          const newItem: TIngredient = state.data.filter((item: TIngredient) => item._id === action.id.id)[0];
+          const newItem: TIngredient = state.data.filter((item) => item._id === action.id.id)[0];
           const modifyedItem = {
             ...newItem,
             specialId: action.specialId,
@@ -101,7 +101,7 @@ export const mainReducer = (state = initialState, action: any) => {
             ...state,
             constructorData: [
               ...state.constructorData.filter(
-                (item: TIngredient) => item.specialId !== action.id
+                (item) => item.specialId !== action.id
               ),
             ],
           };

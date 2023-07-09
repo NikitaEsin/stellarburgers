@@ -19,8 +19,8 @@ const OrderContent = () => {
     return (
       <section className={styles.orderSection + ' mb-20'}>
         {orders
-          .filter((itm: TOrder) => itm._id === _id)
-          .map((item: TOrder, index: number) => {
+          .filter((itm) => itm._id === _id)
+          .map((item, index: number) => {
             const feedIds: Array<string> = item.ingredients;
             const feedArr: Array<Array<TIngredient>> = [];
             const priceArray: Array<number> = [];

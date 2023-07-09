@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from '../styles/App.module.css';
 import Header from './Header';
 import Main from '../Pages/Main';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../Hooks/Hooks';
 import { getData } from '../services/actions';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LogIn from '../Pages/LogIn';
@@ -24,7 +24,7 @@ import Order from '../Pages/Order';
 
 
 function App() {
-  const dispatch: any = useDispatch();
+  const dispatch = useAppDispatch();
   const [constructor, setConstructor] = useState(
     <div className={styles.navIcon + ' pt-4 pb-4 ml-5 mr-5'}>
       <BurgerIcon type="primary" />
@@ -41,8 +41,8 @@ function App() {
       </p>
     </div>
   );
-  const { data, dataRequest, dataFailed } = useSelector(
-    (state: any) => state.mainReducer
+  const { data, dataRequest, dataFailed } = useAppSelector(
+    (state) => state.mainReducer
   );
 
   useEffect(() => {
@@ -89,7 +89,7 @@ function App() {
     </Routes>
     {background && (
       <Routes>
-        <Route path='/ingredients/:_id' element={<Modal data={data} activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}><IngredientDetails info={data} setActivator={setPopupOrderActiv}/></Modal>}/>
+        <Route path='/ingredients/:_id' element={<Modal data={data} activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}><IngredientDetails info={data} setActivator={setPopupIngridiantActiv}/></Modal>}/>
         <Route path="/feed/:_id" element={<Modal data={data} activator={popupOrderItemActive} setActivator={setPopupOrderItemActive}><Order /></Modal>}/>
         <Route path="/profile/orders/:_id" element={<Modal data={data} activator={popupProfileOrderActive} setActivator={setPopupProfileOrderActive}><Order /></Modal>}/>
       </Routes>

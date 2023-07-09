@@ -83,7 +83,6 @@ export function connectionClosed(payload: string) {
 
 export function onMessage(orders: TOrder[], total: number, totalToday: number) {
   return function (dispatch: AppDispatch) {
-    console.log(orders)
     dispatch({
       type: WS_GET_MESSAGE,
       orders: orders,

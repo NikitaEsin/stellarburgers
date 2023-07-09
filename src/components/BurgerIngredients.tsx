@@ -4,7 +4,7 @@ import styles from '../styles/BurgerIngredients.module.css';
 import BurgerIngredient from './BurgerIngredient';
 import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../Hooks/Hooks';
 import { FC } from 'react';
 
 interface IBurgerIngredients {
@@ -13,7 +13,7 @@ interface IBurgerIngredients {
 }
 
 const BurgerIngredients: FC<IBurgerIngredients> = ({ setActivator }) => {
-  const { data } = useSelector((state: any) => state.mainReducer);
+  const { data } = useAppSelector((state) => state.mainReducer);
 
   const [bunRef, bunView] = useInView({
     threshold: 0,

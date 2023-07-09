@@ -2,11 +2,11 @@ import React from "react";
 import styles from '../styles/OrderDetails.module.css'
 import done from '../img/done.png'
 import {  } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../Hooks/Hooks";
 
 const OrderDetails = () => {
-    const { number } = useSelector(
-        (state: any) => state.orderReducer
+    const { number } = useAppSelector(
+        (state) => state.orderReducer
       );
     return(
         <div className={styles.intel}>

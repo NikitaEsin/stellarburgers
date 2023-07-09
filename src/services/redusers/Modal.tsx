@@ -1,12 +1,14 @@
 import {
     POST_ORDER,
-    GET_INGREDIENT_INFO
+    GET_INGREDIENT_INFO,
 } from '../actions/constants'
 
-
+export const orderInitialState = {
+  number: 0, dataRequest: false, dataFailed: false
+}
 export const orderReducer = (
-    state = { number: 0, dataRequest: false, dataFailed: false },
-    action
+    state = orderInitialState,
+    action: any
   ) => {
     switch (action.type) {
       case POST_ORDER: {
@@ -21,9 +23,12 @@ export const orderReducer = (
       }
     }
   };
+  export const ingredientInitialState = {
+    data: {}, dataRequest: false, dataFailed: false
+  }
   export const infoReducer = (
-    state = { data: {}, dataRequest: false, dataFailed: false },
-    action
+    state = ingredientInitialState,
+    action: any
   ) => {
     switch (action.type) {
       case GET_INGREDIENT_INFO: {

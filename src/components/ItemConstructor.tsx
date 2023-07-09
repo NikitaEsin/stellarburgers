@@ -6,7 +6,7 @@ import {
 import styles from '../styles/BurgerConstructor.module.css';
 import lock from '../img/lock.svg';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../Hooks/Hooks';
 import ConstractorWrapper from './ConstractorWrapper'
 import { REMOVE_ITEM } from '../services/actions/constants';
 import { useDrag, useDrop } from 'react-dnd';
@@ -22,7 +22,7 @@ interface IConstructor {
 }
 
 const Constructor: FC<IConstructor> = ({ img, id, index, moveElement, data, place }): any => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [{ handlerId }, drop] = useDrop({
     accept: 'item',

@@ -67,7 +67,6 @@ import {
           };
           socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
-            console.log(data)
             dispatch({
               type: WS_GET_MESSAGE,
               orders: data.orders,

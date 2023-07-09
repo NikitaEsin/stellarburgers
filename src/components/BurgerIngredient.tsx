@@ -36,8 +36,8 @@ const BurgerIngredient: FC<IBurgerIngredient> = ({ data, setActivator }) => {
     return <Loader />;
   } else {
     let counter;
-  const amount = constructorData.filter((item: TIngredient) => item._id === id).length;
-    const bunsAmount = bunInOrder.filter((item: TIngredient) => item._id === id).length;
+  const amount = constructorData.filter((item) => item._id === id).length;
+    const bunsAmount = bunInOrder.filter((item) => item._id === id).length;
   
   if (amount > 0) {
     counter = (

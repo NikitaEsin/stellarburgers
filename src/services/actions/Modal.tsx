@@ -5,8 +5,8 @@ import {
 
 import { request } from '../../utils'
 
-export function postOrder(ids) {
-    return function (dispatch) {
+export function postOrder(ids: any) {
+    return function (dispatch: any) {
       request(`/orders`, {
         method: 'POST',
         headers: {
@@ -18,7 +18,6 @@ export function postOrder(ids) {
         }),
       })
         .then((res) => {
-            console.log(res)
           dispatch({
             type: POST_ORDER,
             number: res.order.number,
@@ -27,8 +26,8 @@ export function postOrder(ids) {
         
     };
   }
-  export function getInfo(item) {
-    return function (dispatch) {
+  export function getInfo(item: any) {
+    return function (dispatch: any) {
       dispatch({
         type: GET_INGREDIENT_INFO,
         info: item,

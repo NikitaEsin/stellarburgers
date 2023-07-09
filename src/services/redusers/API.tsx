@@ -2,7 +2,7 @@ import { GET_TOKEN, DELETE_TOKEN } from '../actions/constants';
 
 export const tokenReducer = (
     state = { token: '', isLoggedIn:false },
-    action
+    action: any
   ) => {
     switch (action.type) {
       case GET_TOKEN: {

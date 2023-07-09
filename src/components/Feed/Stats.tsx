@@ -6,7 +6,7 @@ import { TOrder } from '../../services/redusers/Feed';
 
 const Stats = () => {
   const { orders, total, totalToday } = useAppSelector(
-    (state: any) => state.wsReducer
+    (state) => state.wsReducer
   );
   const done: Array<TOrder> = [];
   const notDone: Array<TOrder> = [];
@@ -31,7 +31,7 @@ const Stats = () => {
           <div className={styles.statContainer}>
             <p className="text text_type_main-medium mb-6">Готовы:</p>
             <div className={styles.readyContainer}>
-              {last10ready.map((item: TOrder, index: number) => {
+              {last10ready.map((item, index: number) => {
                 return (
                   <p key={index} className={styles.preparedOrder + ' text text_type_main-default mb-2'}>
                     {item.number}
@@ -43,7 +43,7 @@ const Stats = () => {
           <div className={styles.statContainer + ' ml-9'}>
             <p className="text text_type_main-medium mb-6">В работе:</p>
             <div className={styles.readyContainer}>
-              {last10notReady.map((item: TOrder, index: number) => {
+              {last10notReady.map((item, index: number) => {
                 return (
                   <p key={index} className="text text_type_main-default mb-2">
                     {item.number}

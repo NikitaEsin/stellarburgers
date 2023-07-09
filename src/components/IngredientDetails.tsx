@@ -10,7 +10,7 @@ interface IIngredientDetails {
 }
 
 const IngredientDetails: FC<IIngredientDetails> = ({ info, setActivator }) => {
-    const { data } = useAppSelector((state: any) => state.infoReducer);
+    const { data } = useAppSelector((state) => state.infoReducer);
 
     useEffect(() => {
         setActivator(true);

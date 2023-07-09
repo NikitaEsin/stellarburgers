@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { handleFormSubmit } from '../utils';
 import { Auth } from '../services/actions/API';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../Hooks/Hooks';
 
 const LogIn = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const navigate = useNavigate();
-  const dispatch: any = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <section className={styles.main}>

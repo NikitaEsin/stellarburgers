@@ -5,7 +5,7 @@ import {
   CurrencyIcon,
   Button,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../Hooks/Hooks';
 import { postOrder } from '../services/actions/Modal';
 import PropTypes from 'prop-types';
 import Loader from './Loader';
@@ -25,8 +25,8 @@ interface IBurgerConstructor {
 }
 
 const BurgerConstructor: FC<IBurgerConstructor> = ({ setActivator }) => {
-  const { data, constructorData, bunInOrder } = useSelector(
-    (state: any) => state.mainReducer
+  const { data, constructorData, bunInOrder } = useAppSelector(
+    (state) => state.mainReducer
   );
   const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ const BurgerConstructor: FC<IBurgerConstructor> = ({ setActivator }) => {
     });
   }, []);
 
-  const dispatch: any = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [, drop] = useDrop({
     accept: 'ingredient',
@@ -81,7 +81,7 @@ const BurgerConstructor: FC<IBurgerConstructor> = ({ setActivator }) => {
           {announce}
           <ItemConstructor data={bunInOrder[0]} place="top" />
           <div className={styles.scroll}>
-            {constructorData.map((item: any, index: number) => {
+            {constructorData.map((item, index: number) => {
               if (item.type !== 'bun') {
                 ids.push(item._id);
                 priceArray.push(item.price);
