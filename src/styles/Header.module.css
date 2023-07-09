@@ -1,0 +1,50 @@
+.header {
+  width: 100%;
+  background-color: #1c1c21;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_section {
+  max-width: 1240px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header_container {
+  display: flex;
+  gap: 8px;
+}
+
+.header_button {
+  display: flex;
+  cursor: pointer;
+  border: none;
+  border-radius: 40px;
+  background: #1C1C21;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  width: 24px;
+  height: 22px;
+  padding-right: 8px;
+}
+
+.logo {
+  cursor: pointer;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  margin-right: 200px;
+}
+
+.header_text {
+  font-family: 'Jet Brains Mono';
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: normal;
+  color: #F2F2F3;
+}
