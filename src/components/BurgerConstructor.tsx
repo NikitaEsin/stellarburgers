@@ -20,13 +20,16 @@ import { useNavigate } from 'react-router-dom';
 import { FC } from 'react';
 
 interface IBurgerConstructor {
-  setActivator: any;
+  setActivator: React.Dispatch<React.SetStateAction<boolean>>;
   activator: any
 }
 
 const BurgerConstructor: FC<IBurgerConstructor> = ({ setActivator }) => {
   const { data, constructorData, bunInOrder } = useAppSelector(
     (state) => state.mainReducer
+  );
+  const { token } = useAppSelector(
+    (state) => state.tokenReducer
   );
   const navigate = useNavigate();
 
@@ -69,7 +72,7 @@ const BurgerConstructor: FC<IBurgerConstructor> = ({ setActivator }) => {
     const handleButtonClick = () => {
       if (sessionStorage.refreshToken) {
         setActivator(true);
-        dispatch(postOrder(ids));
+        dispatch(postOrder(ids, token));
       } else {
         navigate('/login', { replace: true });
       }

@@ -37,7 +37,6 @@ export const wsReducer = (
 ) => {
   switch (action.type) {
     case WS_CONNECTION:
-      console.log(action)
       return {
         ...state,
         error: undefined,

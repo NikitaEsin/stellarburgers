@@ -14,6 +14,8 @@ import { tokenReducer } from './API';
 import { wsReducer } from './Feed';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { socketMiddleware } from '../middleware';
+import { TIndexActions } from '../actions';
+
 
 
 export type TIngredient = {
@@ -51,7 +53,7 @@ export const initialState: IDataState = {
   bunInOrder: [],
 };
 
-export const mainReducer = (state = initialState, action: any) => {
+export const mainReducer = (state = initialState, action: TIndexActions) => {
     switch (action.type) {
         case GET_DATA: {
           return {
@@ -89,7 +91,7 @@ export const mainReducer = (state = initialState, action: any) => {
           const newItem: TIngredient = state.data.filter((item) => item._id === action.id.id)[0];
           const modifyedItem = {
             ...newItem,
-            specialId: action.specialId,
+            specialId: action.uniqueId,
           };
           return {
             ...state,

@@ -13,8 +13,8 @@ const Order = () => {
   let accessToken: string;
   if (token !== '') {
     accessToken = token.slice(7);
-  } else {
-    accessToken = localStorage.accessToken.slice(7);
+  } else { if (localStorage.accessToken) {
+    accessToken = localStorage.accessToken.slice(7);}
   }
 
   useEffect(() => {

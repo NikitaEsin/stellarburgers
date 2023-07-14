@@ -1,8 +1,9 @@
 import { GET_TOKEN, DELETE_TOKEN } from '../actions/constants';
+import { TAuthActions } from '../actions/API';
 
 export const tokenReducer = (
     state = { token: '', isLoggedIn:false },
-    action: any
+    action: TAuthActions
   ) => {
     switch (action.type) {
       case GET_TOKEN: {

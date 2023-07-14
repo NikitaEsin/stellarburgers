@@ -14,8 +14,8 @@ import { FC } from 'react';
 import { TIngredient } from '../services/redusers';
 
 interface IBurgerIngredient {
-  data: any;
-  setActivator: any;
+  data: TIngredient;
+  setActivator: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const BurgerIngredient: FC<IBurgerIngredient> = ({ data, setActivator }) => {
   const { constructorData, bunInOrder } = useAppSelector(
@@ -32,12 +32,12 @@ const BurgerIngredient: FC<IBurgerIngredient> = ({ data, setActivator }) => {
   });
 
   
-  if (data.length > 1) {
+  if (!data) {
     return <Loader />;
   } else {
     let counter;
-  const amount = constructorData.filter((item) => item._id === id).length;
-    const bunsAmount = bunInOrder.filter((item) => item._id === id).length;
+  const amount = constructorData.filter((item: TIngredient) => item._id === id).length;
+    const bunsAmount = bunInOrder.filter((item: TIngredient) => item._id === id).length;
   
   if (amount > 0) {
     counter = (

@@ -6,7 +6,7 @@ import { FC } from 'react';
 
 interface IIngredientDetails {
   info: any;
-  setActivator: any;
+  setActivator: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const IngredientDetails: FC<IIngredientDetails> = ({ info, setActivator }) => {

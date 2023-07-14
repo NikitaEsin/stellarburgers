@@ -4,6 +4,7 @@ import styles from '../styles/IngredientDetails.module.css'
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../Hooks/Hooks';
 import { FC } from "react";
+import { TIngredient } from '../services/redusers';
 
 interface IIngredient {
   constructor: any,
@@ -22,8 +23,8 @@ const Ingredient: FC<IIngredient> = ({constructor, profile}) => {
     return (
       <>
         {data
-          .filter((item: any) => item._id === _id)
-          .map((item: any, index: number) => {
+          .filter((item: TIngredient) => item._id === _id)
+          .map((item: TIngredient, index: number) => {
             return (
               <section key={index}>
                 <div className={styles.ingredientDetails + ' pt-10 pl-10'}>

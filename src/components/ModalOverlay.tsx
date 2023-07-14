@@ -6,7 +6,7 @@ import { FC } from 'react';
 interface IModalOverlay {
   activator: boolean;
   children?: any;
-  setActivator: any;
+  setActivator: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ModalOverlay: FC<IModalOverlay> = ({ activator, children, setActivator }) => {

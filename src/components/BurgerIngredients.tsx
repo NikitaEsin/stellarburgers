@@ -6,9 +6,10 @@ import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 import { useAppSelector } from '../Hooks/Hooks';
 import { FC } from 'react';
+import { TIngredient } from '../services/redusers';
 
 interface IBurgerIngredients {
-  setActivator: any;
+  setActivator: React.Dispatch<React.SetStateAction<boolean>>;
   activator: any
 }
 
@@ -35,7 +36,7 @@ const BurgerIngredients: FC<IBurgerIngredients> = ({ setActivator }) => {
         <section className={styles.ingredientsSection + ' pt-10'} ref={bunRef}>
           <h2 className="text text_type_main-medium pb-6">Булки</h2>
           <ul className={styles.ingredientTable + ' pl-4 pr-4'}>
-            {data.map((item: any) => {
+            {data.map((item: TIngredient) => {
               if (item.type === 'bun') {
                 return (
                   <BurgerIngredient
@@ -54,7 +55,7 @@ const BurgerIngredients: FC<IBurgerIngredients> = ({ setActivator }) => {
         >
           <h2 className="text text_type_main-medium pb-6">Соусы</h2>
           <ul className={styles.ingredientTable + ' pl-4 pr-4'}>
-            {data.map((item: any) => {
+            {data.map((item: TIngredient) => {
               if (item.type === 'sauce') {
                 return (
                   <BurgerIngredient
@@ -70,7 +71,7 @@ const BurgerIngredients: FC<IBurgerIngredients> = ({ setActivator }) => {
         <section className={styles.ingredientsSection + ' pt-10'} ref={mainRef}>
           <h2 className="text text_type_main-medium pb-6">Начинки</h2>
           <ul className={styles.ingredientTable + ' pl-4 pr-4'}>
-            {data.map((item: any) => {
+            {data.map((item: TIngredient) => {
               if (item.type === 'main') {
                 return (
                   <BurgerIngredient

@@ -10,7 +10,7 @@ import { FC } from 'react';
 import { useAppSelector } from '../Hooks/Hooks';
 
 interface IProfileOrders {
-  setActivator: any;
+  setActivator: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ProfileOrders: FC<IProfileOrders> = ({ setActivator }) => {

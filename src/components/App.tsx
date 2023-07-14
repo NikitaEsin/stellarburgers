@@ -20,6 +20,7 @@ import IngredientDetails from './IngredientDetails';
 import Feed from '../Pages/Feed'
 import ProfileOrders from '../Pages/ProfileOrders'
 import Order from '../Pages/Order';
+import OrderModal from '../Pages/OrderModal';
 
 
 
@@ -90,8 +91,8 @@ function App() {
     {background && (
       <Routes>
         <Route path='/ingredients/:_id' element={<Modal data={data} activator={popupIngridiantActiv} setActivator={setPopupIngridiantActiv}><IngredientDetails info={data} setActivator={setPopupIngridiantActiv}/></Modal>}/>
-        <Route path="/feed/:_id" element={<Modal data={data} activator={popupOrderItemActive} setActivator={setPopupOrderItemActive}><Order /></Modal>}/>
-        <Route path="/profile/orders/:_id" element={<Modal data={data} activator={popupProfileOrderActive} setActivator={setPopupProfileOrderActive}><Order /></Modal>}/>
+        <Route path="/feed/:_id" element={<Modal data={data} activator={popupOrderItemActive} setActivator={setPopupOrderItemActive}><OrderModal setActive={setPopupOrderItemActive}/></Modal>}/>
+        <Route path="/profile/orders/:_id" element={<Modal data={data} activator={popupProfileOrderActive} setActivator={setPopupProfileOrderActive}><OrderModal setActive={setPopupProfileOrderActive}/></Modal>}/>
       </Routes>
     )}
   </>

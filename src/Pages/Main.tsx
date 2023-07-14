@@ -13,10 +13,10 @@ import { useAppSelector } from '../Hooks/Hooks';
 import { FC } from 'react';
 
 interface IMain  {
-  popupOrderActiv: any,
+  popupOrderActiv: boolean,
   popupIngridiantActiv: any,
-  data: any,
-  setPopupOrderActiv: any,
+  data: Array<object>,
+  setPopupOrderActiv: React.Dispatch<React.SetStateAction<boolean>>,
   setPopupIngridiantActiv: any,
   setConstructor: any,
   setProfile: any

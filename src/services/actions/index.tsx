@@ -4,11 +4,52 @@ import {
     GET_DATA_SUCCESS,
     ADD_ITEM,
     REMOVE_ITEM,
+    MOVE_CONSTRUCTOR_ITEM
 } from './constants'
 import { request } from '../../utils';
+import { AppDispatch, TIngredient } from '../redusers';
+
+export interface IGetDataAction {
+  readonly type: typeof GET_DATA;
+}
+
+export interface IGetDataSuccessAction {
+  readonly type: typeof GET_DATA_SUCCESS;
+  readonly data: [];
+  readonly buns: [];
+}
+
+export interface IGetDataFailedAction {
+  readonly type: typeof GET_DATA_FAIL;
+}
+
+export interface IAddItemAction {
+  readonly type: typeof ADD_ITEM;
+  readonly id: any;
+  readonly uniqueId: string;
+}
+
+export interface IRemoveItemAction {
+  readonly type: typeof REMOVE_ITEM;
+  readonly id?: string;
+}
+
+export interface IMoveConstructorItemAction {
+  readonly type: typeof MOVE_CONSTRUCTOR_ITEM;
+  readonly dragIndex: number;
+  readonly hoverIndex: number;
+}
+
+export type TIndexActions =
+  | IGetDataAction
+  | IGetDataSuccessAction
+  | IGetDataFailedAction
+  | IAddItemAction
+  | IRemoveItemAction
+  | IMoveConstructorItemAction;
 
 export function getData() {
-    return function (dispatch: any) {
+    return function (dispatch: AppDispatch) {
         dispatch({
             type: GET_DATA,
         });
@@ -27,7 +68,7 @@ export function getData() {
 }
 
 export function addItem(itemId: string, specialId: string) {
-  return function (dispatch: any) {
+  return function (dispatch: AppDispatch) {
     dispatch({
       type: ADD_ITEM,
       id: itemId,
@@ -37,7 +78,7 @@ export function addItem(itemId: string, specialId: string) {
 }
 
 export function RemoveItem(specialId: string) {
-  return function (dispatch: any) {
+  return function (dispatch: AppDispatch) {
     dispatch({
       type: REMOVE_ITEM,
       id: specialId,

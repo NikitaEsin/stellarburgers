@@ -2,6 +2,7 @@ import {
     POST_ORDER,
     GET_INGREDIENT_INFO,
 } from '../actions/constants'
+import { TModalsActions } from '../actions/Modal';
 
 export const orderInitialState = {
   number: 0, dataRequest: false, dataFailed: false

@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import styles from '../styles/BurgerConstructor.module.css';
 import PropTypes from 'prop-types';
 import { FC } from 'react';
 
 interface IConstractorWrapper {
-  data: any;
-  place: any;
-  children?: any;
+  data: string | undefined;
+  place: string | undefined;
+  children?: ReactNode;
 }
 
 const ConstractorWrapper: FC<IConstractorWrapper> = ({

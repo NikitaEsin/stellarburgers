@@ -11,13 +11,14 @@ import ConstractorWrapper from './ConstractorWrapper'
 import { REMOVE_ITEM } from '../services/actions/constants';
 import { useDrag, useDrop } from 'react-dnd';
 import { FC } from 'react';
+import { TIngredient } from '../services/redusers';
 
 interface IConstructor {
-  img?: any;
-  id?: any;
+  img?: string;
+  id?: string;
   index?: number;
   moveElement?: any;
-  data?: any;
+  data?: TIngredient;
   place?: string;
 }
 

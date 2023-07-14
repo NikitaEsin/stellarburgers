@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 interface IModal {
     activator: boolean;
     children?: any;
-    setActivator: any;
+    setActivator: React.Dispatch<React.SetStateAction<boolean>>;
     data?: any;
   }  
 
@@ -23,7 +23,7 @@ const Modal: FC<IModal> = ({ activator, children, setActivator }) => {
                     className={styles.CloseIcon} 
                     onClick={() => {
                         setActivator(false)
-                        navigate('/', { replace: true });
+                        
                     }}>
                     </button>
                     {children}
