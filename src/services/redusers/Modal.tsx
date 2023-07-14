@@ -9,7 +9,7 @@ export const orderInitialState = {
 }
 export const orderReducer = (
     state = orderInitialState,
-    action: any
+    action: TModalsActions
   ) => {
     switch (action.type) {
       case POST_ORDER: {
@@ -35,7 +35,7 @@ export const orderReducer = (
       case GET_INGREDIENT_INFO: {
         return {
           ...state,
-          data: action.info,
+          data: action.item,
           dataRequest: false,
         };
       }

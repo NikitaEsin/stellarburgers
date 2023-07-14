@@ -3,7 +3,8 @@ import {
     GET_INGREDIENT_INFO
 } from './constants'
 import { AppDispatch } from '../redusers/index';
-import { request } from '../../utils'
+import { request } from '../../utils';
+import { TIngredient } from '../redusers/index';
 
 export interface IStoreIngredientAction {
   readonly type: typeof GET_INGREDIENT_INFO;
@@ -12,6 +13,7 @@ export interface IStoreIngredientAction {
 
 export interface IPostOrderAction {
   readonly type: typeof POST_ORDER;
+  readonly number: number
 }
 
 interface Array {}
@@ -47,7 +49,7 @@ export function postOrder(ids: Array, token: string) {
     return function (dispatch: AppDispatch) {
       dispatch({
         type: GET_INGREDIENT_INFO,
-        info: item,
+        item: item,
       });
     };
   }
