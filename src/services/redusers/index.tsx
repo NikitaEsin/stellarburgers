@@ -91,7 +91,7 @@ export const mainReducer = (state = initialState, action: TIndexActions) => {
           const newItem: TIngredient = state.data.filter((item) => item._id === action.id.id)[0];
           const modifyedItem = {
             ...newItem,
-            specialId: action.uniqueId,
+            specialId: action.specialId,
           };
           return {
             ...state,

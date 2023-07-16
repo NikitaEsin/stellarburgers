@@ -26,7 +26,7 @@ export interface IGetDataFailedAction {
 export interface IAddItemAction {
   readonly type: typeof ADD_ITEM;
   readonly id: any;
-  readonly uniqueId: string;
+  readonly specialId: string;
 }
 
 export interface IRemoveItemAction {
